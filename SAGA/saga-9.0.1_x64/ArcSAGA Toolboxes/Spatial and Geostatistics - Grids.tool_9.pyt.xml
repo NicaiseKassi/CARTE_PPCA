@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_9" displayname="Multi-Band Variation">
+    <parameters>
+      <param name="BANDS" displayname="Bands" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Bands&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MEAN" displayname="Mean Distance" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Distance&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STDDEV" displayname="Standard Deviation" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Standard Deviation&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIFF" displayname="Distance" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Distance&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RADIUS" displayname="Radius [Cells]" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Radius [Cells]&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_WEIGHTING" displayname="Weighting Function" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weighting Function&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] no distance weighting&lt;/p&gt;&lt;p&gt;[1] inverse distance to a power&lt;/p&gt;&lt;p&gt;[2] exponential&lt;/p&gt;&lt;p&gt;[3] gaussian&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_IDW_POWER" displayname="Power" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Power&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_BANDWIDTH" displayname="Bandwidth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bandwidth&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Bandwidth for exponential and Gaussian weighting&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Calculates for each cell the spectral variation based on feature space distances to the centroid for all cells in specified neighbourhood. The average distance has been used for Spectral Variation Hypothesis (SVH).</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2010</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_5" displayname="Cubic Spline Approximation">
+    <parameters>
+      <param name="SHAPES" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FIELD" displayname="Attribute" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Attribute&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_OUT_GRID" displayname="Target Grid" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Target Grid&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NPMIN" displayname="Minimal Number of Points" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimal Number of Points&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NPMAX" displayname="Maximal Number of Points" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximal Number of Points&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 11&lt;/p&gt;&lt;p&gt;Maximum: 59&lt;/p&gt;&lt;p&gt;Default: 20&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NPPC" displayname="Points per Square" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Points per Square&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 5.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="K" displayname="Tolerance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tolerance&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 140&lt;/p&gt;&lt;p&gt;Spline sensitivity, reduce to get smoother results, recommended: 80 &lt; Tolerance &lt; 200&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool approximates irregular scalar 2D data in specified points using C1-continuous bivariate cubic spline.
+Minimal Number of Points:                minimal number of points locally involved                in spline calculation (normally = 3)
+
+Maximal Number of Points:npmax:          maximal number of points locally involved                in spline calculation (required &gt; 10,                recommended 20 &lt; npmax &lt; 60)
+Tolerance:                relative tolerance multiple in fitting                spline coefficients: the higher this                value, the higher degree of the locally                fitted spline (recommended 80 &lt; k &lt; 200)
+
+Points per square:                average number of points per square                (increase if the point distribution is strongly non-uniform                to get larger cells)
+
+Author:         Pavel Sakov,                CSIRO Marine Research
+
+Purpose:        2D data approximation with bivariate C1 cubic spline.                A set of library functions + standalone utility.
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O. Conrad (c) 2008</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

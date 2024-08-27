@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_20" displayname="Melton Ruggedness Number">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AREA" displayname="Catchment Area" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Catchment Area&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ZMAX" displayname="Maximum Height" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Height&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MRN" displayname="Melton Ruggedness Number" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Melton Ruggedness Number&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Melton ruggedness number (MNR) is a simple flow accumulation related index, calculated as difference between maximum and minimum elevation in catchment area divided by square root of catchment area size. The calculation is performed for each grid cell, therefore minimum elevation is same as elevation at cell's position. Due to the discrete character of a single maximum elevation, flow calculation is simply done with Deterministic 8.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

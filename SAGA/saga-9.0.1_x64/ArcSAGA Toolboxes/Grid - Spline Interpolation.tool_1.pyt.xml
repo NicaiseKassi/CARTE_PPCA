@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_1" displayname="Thin Plate Spline (TIN)">
+    <parameters>
+      <param name="SHAPES" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FIELD" displayname="Attribute" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Attribute&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_OUT_GRID" displayname="Target Grid" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Target Grid&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="REGULARISATION" displayname="Regularisation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Regularisation&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000100&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LEVEL" displayname="Neighbourhood" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Neighbourhood&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] immediate&lt;/p&gt;&lt;p&gt;[1] level 1&lt;/p&gt;&lt;p&gt;[2] level 2&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FRAME" displayname="Add Frame" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Add Frame&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Creates a 'Thin Plate Spline' function for each triangle of a TIN and uses it for subsequent gridding. The TIN is internally created from the scattered data points input. The 'Neighbourhood' option determines the number of points used for the spline generation. 'Immediate neighbourhood' includes the points of the triangle as well as the immediate neighbour points. 'Level 1' adds the neighbours of the immediate neighbourhood and 'level 2' adds the neighbours of 'level 1' neighbours too. A higher neighbourhood degree reduces sharp breaks but also increases the computation time. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2006</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_4" displayname="Function Plotter">
+    <parameters>
+      <param name="FORMULA" displayname="Formula" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Formula&lt;/p&gt;&lt;p&gt;Text&lt;/p&gt;&lt;p&gt;Default: sin(x*x + y*y)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="X_RANGE_MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="X_RANGE_MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Y_RANGE_MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Y_RANGE_MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FUNCTION" displayname="Function" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Function&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Generate a grid based on a functional expression. The function interpreter uses an formula expression parser that offers the following operators:
+&lt;table border="0"&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;+&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Addition&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;-&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Subtraction&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;*&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Multiplication&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;/&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Division&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;abs(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Absolute Value&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;mod(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the floating point remainder of x/y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;int(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the integer part of floating point value x&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sqr(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Square&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sqrt(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Square Root&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;exp(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Exponential&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;pow(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x raised to the power of y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x ^ y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x raised to the power of y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ln(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Natural Logarithm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;log(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Base 10 Logarithm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;pi()&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the value of Pi&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sin(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Sine, expects radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;cos(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Cosine, expects radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;tan(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Tangent, expects radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;asin(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arcsine, returns radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;acos(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arccosine, returns radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;atan(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arctangent, returns radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;atan2(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arctangent of x/y, returns radians&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;min(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the minimum of values x and y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;max(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the maximum of values x and y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;gt(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is greater than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x &gt; y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is greater than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;lt(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is less than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x &lt; y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is less than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;eq(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x equals y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x = y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x equals y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;and(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if both x and y are true (i.e. not 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;or(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if at least one of both x and y is true (i.e. not 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ifelse(c, x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x, if condition c is true (i.e. not 0), else y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;rand_u(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Random number, uniform distribution with minimum x and maximum y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;rand_g(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Random number, Gaussian distribution with mean x and standard deviation y&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>A.Ringeler (c) 2003</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

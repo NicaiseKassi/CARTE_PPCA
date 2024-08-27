@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_9" displayname="Threshold Buffer">
+    <parameters>
+      <param name="FEATURES" displayname="Features" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Features&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="VALUE" displayname="Value" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Value&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLDGRID" displayname="Threshold" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Threshold&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BUFFER" displayname="Buffer" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Buffer&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLD" displayname="Threshold Value" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold Value&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLDTYPE" displayname="Threshold Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Absolute&lt;/p&gt;&lt;p&gt;[1] Relative from cell value&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Threshold Buffer Creation</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Victor Olaya (c) 2004</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

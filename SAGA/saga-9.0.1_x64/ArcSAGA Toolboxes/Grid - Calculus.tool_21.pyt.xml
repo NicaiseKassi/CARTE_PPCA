@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_21" displayname="Histogram Matching">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MATCHED" displayname="Adjusted Grid" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Adjusted Grid&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="REFERENCE" displayname="Reference Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Reference Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] standard deviation&lt;/p&gt;&lt;p&gt;[1] histogram&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NCLASSES" displayname="Histogramm Classes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Histogramm Classes&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 100&lt;/p&gt;&lt;p&gt;Default: 10&lt;/p&gt;&lt;p&gt;Number of histogram classes for internal use.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXSAMPLES" displayname="Maximum Sample Size" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Sample Size&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 1000000&lt;/p&gt;&lt;p&gt;If set to zero all data will be used to build the histograms.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool alters the values of a grid so that its value distribution (its histogram), matches that of a reference grid. The first method simply uses arithmetic mean and standard deviation for adjustment, which usually is sufficient for normal distributed values. The second method performs a more precise adjustment based on the grids' histograms. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

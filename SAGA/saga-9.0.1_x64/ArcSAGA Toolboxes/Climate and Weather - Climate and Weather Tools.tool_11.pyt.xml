@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_11" displayname="Tree Growth Season">
+    <parameters>
+      <param name="T" displayname="Mean Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Mean Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TMIN" displayname="Minimum Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Minimum Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TMAX" displayname="Maximum Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Maximum Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="P" displayname="Precipitation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Precipitation&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWC" displayname="Soil Water Capacity of Profile" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Soil Water Capacity of Profile&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Total soil water capacity (mm H2O).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWC_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 220.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWC_SURFACE" displayname="Top Soil Water Capacity" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Top Soil Water Capacity&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SW1_RESIST" displayname="Transpiration Resistance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Transpiration Resistance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.010000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LAT_DEF" displayname="Default Latitude" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default Latitude&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: -90.000000&lt;/p&gt;&lt;p&gt;Maximum: 90.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SMT" displayname="Mean Temperature" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Temperature&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Mean temperature of the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SMP" displayname="Precipitation Sum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation Sum&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Precipitation sum of the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LGS" displayname="Length" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Length&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Number of days of the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FIRST" displayname="First Growing Day" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;First Growing Day&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;First growing day of the year (1-365).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LAST" displayname="Last Growing Day" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Last Growing Day&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Last degree day of the year (1-365).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TLH" displayname="Tree Line Height" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tree Line Height&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Estimated relative tree line height.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DT_MIN" displayname="Threshold Temperature" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold Temperature&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.900000&lt;/p&gt;&lt;p&gt;Threshold temperature (C) that constrains the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SW_MIN" displayname="Minimum Soil Water Content (Percent)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Soil Water Content (Percent)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LGS_MIN" displayname="Minimum Length" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Length&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 94&lt;/p&gt;&lt;p&gt;Minimum length (days) of the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SMT_MIN" displayname="Minimum Mean Temperature" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Mean Temperature&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 6.400000&lt;/p&gt;&lt;p&gt;Minimum mean temperature (Celsius) for all days of the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TLH_MAX_DIFF" displayname="Maximum Tree Line Height Difference" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Tree Line Height Difference&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 3000.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The 'Tree Growth Season' tool estimates the potential number of days suitable for tree growth as well as the average temperature for these days. The estimation needs monthly data of mean, minimum, and maximum temperature and precipitation. Internally a soil water balance model is run on a daily basis. Using the given thresholds a relative tree line height can optionally be estimated.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad, L.Landschreiber (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

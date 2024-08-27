@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="Simple Filter">
+    <parameters>
+      <param name="KEEP_DEPTH" displayname="Keep Input Data Depth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Keep Input Data Depth&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Output will have same data depth as input.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Filter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Filter&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Smooth&lt;/p&gt;&lt;p&gt;[1] Sharpen&lt;/p&gt;&lt;p&gt;[2] Edge&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_TYPE" displayname="Kernel Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Square&lt;/p&gt;&lt;p&gt;[1] Circle&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_RADIUS" displayname="Kernel Radius" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Radius&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Simple standard filters for grid collections.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2017</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

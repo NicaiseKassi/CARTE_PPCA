@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_34" displayname="Mirror Grid">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MIRROR" displayname="Mirror Grid" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Mirror Grid&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] horizontally&lt;/p&gt;&lt;p&gt;[1] vertically&lt;/p&gt;&lt;p&gt;[2] both&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Mirror a grid at its center axes', either vertically, horizontally or both. If the target is not set, the changes will be stored to the original grid. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

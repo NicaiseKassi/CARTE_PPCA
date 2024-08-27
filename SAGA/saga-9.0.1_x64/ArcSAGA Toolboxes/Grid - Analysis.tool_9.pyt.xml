@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_9" displayname="Aggregation Index">
+    <parameters>
+      <param name="INPUT" displayname="Input Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXNUMCLASS" displayname="Max. Number of Classes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Max. Number of Classes&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 10&lt;/p&gt;&lt;p&gt;Maximum number of classes in the entire grid.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESULT" displayname="Result" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Result&lt;/p&gt;&lt;p&gt;Table, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>(c) 2004 by Victor Olaya. Aggregation Index&#xD;
+References:&#xD;
+1. Hong S. He, et al. An aggregation index to quantify spatial patterns of landscapes, Landscape Ecology 15, 591-601,2000&#xD;
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle></resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

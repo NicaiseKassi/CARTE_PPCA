@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_8" displayname="Principal Component Analysis">
+    <parameters>
+      <param name="GRIDS" displayname="Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PCA" displayname="Principal Components" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Principal Components&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EIGEN_INPUT" displayname="Eigen Vectors" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Eigen Vectors&lt;/p&gt;&lt;p&gt;Table, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Use Eigen vectors from this table instead of calculating these from the input grids.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EIGEN" displayname="Eigen Vectors" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Eigen Vectors&lt;/p&gt;&lt;p&gt;Table, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Store calculated Eigen vectors to this table, e.g. for later use with forward or inverse PCA.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] correlation matrix&lt;/p&gt;&lt;p&gt;[1] variance-covariance matrix&lt;/p&gt;&lt;p&gt;[2] sums-of-squares-and-cross-products matrix&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COMPONENTS" displayname="Number of Components" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Components&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;&lt;p&gt;number of first components in the output; set to zero to get all&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OVERWRITE" displayname="Overwrite Previous Results" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Overwrite Previous Results&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Principal Component Analysis (PCA) for grids. PCA implementation is based on F.Murtagh's code as provided by the StatLib web site.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2010</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

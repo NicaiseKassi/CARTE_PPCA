@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_12" displayname="Geodesic Morphological Reconstruction">
+    <parameters>
+      <param name="INPUT_GRID" displayname="Input Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Input for the morphological reconstruction&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIFFERENCE_GRID" displayname="Morphological Reconstruction" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Morphological Reconstruction&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Reconstruction, difference to input grid.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OBJECT_GRID" displayname="Objects" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Objects&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Binary object mask&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHIFT_VALUE" displayname="Shift Value" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Shift Value&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 5.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BORDER_YES_NO" displayname="Preserve 1px border" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Preserve 1px border&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLD" displayname="Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Threshold for object identification.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Geodesic morphological reconstruction according to Vincent (1993). Here we use the algorithm on p. 194: Computing of Regional Maxima and Breadth-first Scanning.
+
+A marker is derived from the input grid by subtracting a constant shift value. Optionally, the shift value can be set to zero at the border of the grid ("Preserve 1px border Yes/No" parameter). The final result is a grid showing the difference between the input image and the morphological reconstruction of the marker under the input image. If the Option "Create a binary mask" is selected, the difference grid is thresholded with provided threshold value to create a binary image of maxima regions. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>HfT Stuttgart (c) 2013</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

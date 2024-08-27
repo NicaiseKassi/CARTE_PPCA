@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_4" displayname="Watershed Segmentation (ViGrA)">
+    <parameters>
+      <param name="INPUT" displayname="Input" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Segmentation" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Segmentation&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE" displayname="Width of gradient filter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Width of gradient filter&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RGB" displayname="RGB coded data" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;RGB coded data&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EDGES" displayname="Edges" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Edges&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Note that the watershed algorithm usually results in an oversegmentation (i.e., too many regions), but its boundary localization is quite good.
+Based on the code example "watershed.cxx" by Ullrich Koethe.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2009</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

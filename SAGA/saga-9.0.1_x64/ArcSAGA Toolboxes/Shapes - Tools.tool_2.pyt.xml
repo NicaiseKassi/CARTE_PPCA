@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_2" displayname="Select by Attributes... (Numerical Expression)">
+    <parameters>
+      <param name="SHAPES" displayname="Shapes" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Shapes&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FIELD" displayname="Attribute" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Attribute&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;attribute to be evaluated by expression ('a'); if not set all attributes can be addressed (f1, f2, ..., fn).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EXPRESSION" displayname="Expression" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Expression&lt;/p&gt;&lt;p&gt;Text&lt;/p&gt;&lt;p&gt;Default: a &gt; 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="USE_NODATA" displayname="Use No-Data" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Use No-Data&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] new selection&lt;/p&gt;&lt;p&gt;[1] add to current selection&lt;/p&gt;&lt;p&gt;[2] select from current selection&lt;/p&gt;&lt;p&gt;[3] remove from current selection&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Selects records for which the expression evaluates to non-zero. The expression syntax is the same as the one for the table calculator. If an attribute field is selected, the expression evaluates only this attribute, which can be addressed with the letter 'a' in the expression formula. If no attribute is selected, attributes are addressed by the character 'f' (for 'field') followed by the field number (i.e.: f1, f2, ..., fn) or by the field name in square brackets (e.g.: [Field Name]).
+Examples:
+- f1 &gt; f2
+- eq([Population] * 2, [Area])
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V.Olaya (c) 2004, O.Conrad (c) 2011</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_0" displayname="Analytical Hillshading">
+    <parameters>
+      <param name="ELEVATION" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE" displayname="Analytical Hillshading" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Analytical Hillshading&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;The angle between the surface and the incoming light beams, measured in radians.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Shading Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Shading Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Standard&lt;/p&gt;&lt;p&gt;[1] Limited Maximum&lt;/p&gt;&lt;p&gt;[2] With Shadows&lt;/p&gt;&lt;p&gt;[3] Shadows Only&lt;/p&gt;&lt;p&gt;[4] Ambient Occlusion&lt;/p&gt;&lt;p&gt;[5] Combined Shading&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="POSITION" displayname="Sun's Position" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sun's Position&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] azimuth and height&lt;/p&gt;&lt;p&gt;[1] date and time&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AZIMUTH" displayname="Azimuth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Azimuth&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 360.000000&lt;/p&gt;&lt;p&gt;Default: 315.000000&lt;/p&gt;&lt;p&gt;Direction of the light source, measured in degree clockwise from the North direction.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DECLINATION" displayname="Height" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Height&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 90.000000&lt;/p&gt;&lt;p&gt;Default: 45.000000&lt;/p&gt;&lt;p&gt;Height of the light source, measured in degree above the horizon.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DATE" displayname="Day" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Day&lt;/p&gt;&lt;p&gt;Date&lt;/p&gt;&lt;p&gt;Default: 2023-04-21&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TIME" displayname="Hour" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Hour&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 24.000000&lt;/p&gt;&lt;p&gt;Default: 12.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EXAGGERATION" displayname="Exaggeration" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Exaggeration&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;The terrain exaggeration factor allows one to increase the shading contrasts in flat areas.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UNIT" displayname="Unit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Unit&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] radians&lt;/p&gt;&lt;p&gt;[1] degree&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADOW" displayname="Shadow" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Shadow&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] slim&lt;/p&gt;&lt;p&gt;[1] fat&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Choose 'slim' to trace grid node's shadow, 'fat' to trace the whole cell's shadow. The first is slightly faster but might show some artifacts.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NDIRS" displayname="Number of Directions" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Directions&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 2&lt;/p&gt;&lt;p&gt;Default: 8&lt;/p&gt;&lt;p&gt;Number of sample directions for ambient occlusion. Divides azimuth range (270 to 0 to 90 degree) into sectors. Declination (0 to 90 degree) is divided in (Number of Directions / 4) sectors.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RADIUS" displayname="Search Radius" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Search Radius&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.001000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;&lt;p&gt;Radius used to trace for shadows (ambient occlusion) [map units].&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool performs an analytical hillshade computation for an elevation grid. The 'Standard' method simply calculates the angle at which light coming from the position of the light source would hit the surface. This method can produce angles greater than 90 degree. With the second method all values are kept within the range of 0-90 degree. It can be enhanced with shadowing effects, where shadowed cells will be marked with a value of exactly 90 degree. 'Shadows Only' creates a mask for the shadowed areas and sets all other cells to no-data. 'Combined Shading' takes the values of the standard method and multiplies these with the normalized slope. 'Ambient Occlusion' is based on the concepts of Tarini et al. (2006), but only the northern half-space is considered here. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad, V.Wichmann (c) 2003-2013</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

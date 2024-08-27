@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_7" displayname="Clip Grid with Polygon">
+    <parameters>
+      <param name="INPUT" displayname="Input" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Output" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Output&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="POLYGONS" displayname="Polygons" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Polygons&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EXTENT" displayname="Target Extent" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Target Extent&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] original&lt;/p&gt;&lt;p&gt;[1] polygons&lt;/p&gt;&lt;p&gt;[2] crop to data&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Clips the input grid with a polygon shapefile. Select polygons from the shapefile prior to tool execution in case you like to use only a subset from the shapefile for clipping.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Stefan Liersch (c) 2006</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

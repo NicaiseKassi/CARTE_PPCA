@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_2" displayname="LS Factor (One Step)">
+    <parameters>
+      <param name="DEM" displayname="DEM" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;DEM&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LS_FACTOR" displayname="LS Factor" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;LS Factor&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FEET" displayname="Feet Conversion" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Feet Conversion&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Needed if area and lengths come from coordinates measured in feet.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LS_METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Moore et al. 1991&lt;/p&gt;&lt;p&gt;[1] Desmond & Govers 1996&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PREPROCESSING" displayname="Preprocessing" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Preprocessing&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] none&lt;/p&gt;&lt;p&gt;[1] Fill Sinks (Wang & Liu)&lt;/p&gt;&lt;p&gt;[2] Sink Removal&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MINSLOPE" displayname="Minimum Slope" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Slope&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000100&lt;/p&gt;&lt;p&gt;Minimum slope (degree) for filled areas.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>	This is a simple to use one step tool to derive the LS Factor of the Universal Soil Loss Equation (USLE) from a Digital Elevatin Model (DEM). It combines DEM preprocessing (sink removal), flow accumulation and specific catchment area (SCA) derivation, slope and final LS factor calculation exposing only the most important options.
+	</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

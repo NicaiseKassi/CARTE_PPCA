@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_14" displayname="UTM Projection (Grid List)">
+    <parameters>
+      <param name="CRS_METHOD" displayname="Get CRS Definition from..." type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Get CRS Definition from...&lt;/p&gt;&lt;p&gt;Choice, CMD&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Proj4 Parameters&lt;/p&gt;&lt;p&gt;[1] EPSG Code&lt;/p&gt;&lt;p&gt;[2] Well Known Text File&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CRS_PROJ4" displayname="Proj4 Parameters" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Proj4 Parameters&lt;/p&gt;&lt;p&gt;Long text&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CRS_FILE" displayname="Well Known Text File" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Well Known Text File&lt;/p&gt;&lt;p&gt;File path&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CRS_EPSG" displayname="Authority Code" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Authority Code&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: -1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CRS_EPSG_AUTH" displayname="Authority" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Authority&lt;/p&gt;&lt;p&gt;Text&lt;/p&gt;&lt;p&gt;Default: EPSG&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SOURCE" displayname="Source" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Source&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESAMPLING" displayname="Resampling" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Resampling&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Nearest Neighbour&lt;/p&gt;&lt;p&gt;[1] Bilinear Interpolation&lt;/p&gt;&lt;p&gt;[2] Bicubic Spline Interpolation&lt;/p&gt;&lt;p&gt;[3] B-Spline Interpolation&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BYTEWISE" displayname="Bytewise Interpolation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bytewise Interpolation&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;To be used for RGB and CMYK coded values (i.e. images).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KEEP_TYPE" displayname="Preserve Data Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Preserve Data Type&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_AREA" displayname="Use Target Area Polygon" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Use Target Area Polygon&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Restricts targeted grid cells to area of the projected bounding rectangle. Useful with certain projections for global data.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRIDS" displayname="Target" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Target&lt;/p&gt;&lt;p&gt;Grid list, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUT_X" displayname="X Coordinates" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;X Coordinates&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUT_Y" displayname="Y Coordinates" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Y Coordinates&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UTM_ZONE" displayname="Zone" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Zone&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Maximum: 60&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UTM_SOUTH" displayname="South" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;South&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Project grids into UTM coordinates.
+Projection routines make use of the Proj.4 Cartographic Projections library.
+Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).
+Proj.4 Version is 7.2.1
+&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O. Conrad (c) 2017</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_2" displayname="Enhanced Vegetation Index">
+    <parameters>
+      <param name="BLUE" displayname="Blue Reflectance" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Blue Reflectance&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RED" displayname="Red Reflectance" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Red Reflectance&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NIR" displayname="Near Infrared Reflectance" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Near Infrared Reflectance&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EVI" displayname="Enhanced Vegetation Index" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Enhanced Vegetation Index&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GAIN" displayname="Gain" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Gain&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.500000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="L" displayname="Canopy Background Adjustment" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Canopy Background Adjustment&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CBLUE" displayname="Aerosol Resistance Coefficient (Blue)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Aerosol Resistance Coefficient (Blue)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 7.500000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CRED" displayname="Aerosol Resistance Coefficient (Red)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Aerosol Resistance Coefficient (Red)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 6.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Enhanced Vegetation Index (EVI).</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2011</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

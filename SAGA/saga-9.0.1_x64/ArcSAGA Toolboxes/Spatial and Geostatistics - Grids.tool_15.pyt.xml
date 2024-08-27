@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_15" displayname="Focal PCA on a Grid">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BASE" displayname="Base Topographies" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Base Topographies&lt;/p&gt;&lt;p&gt;Grid list, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PCA" displayname="Principal Components" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Principal Components&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EIGEN" displayname="Eigen Vectors" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Eigen Vectors&lt;/p&gt;&lt;p&gt;Table, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COMPONENTS" displayname="Number of Components" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Components&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 7&lt;/p&gt;&lt;p&gt;number of first components in the output; set to zero to get all&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BASE_OUT" displayname="Output of Base Topographies" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Output of Base Topographies&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OVERWRITE" displayname="Overwrite Previous Results" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Overwrite Previous Results&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_TYPE" displayname="Kernel Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Square&lt;/p&gt;&lt;p&gt;[1] Circle&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_RADIUS" displayname="Kernel Radius" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Radius&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;&lt;p&gt;Kernel radius in cells.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] correlation matrix&lt;/p&gt;&lt;p&gt;[1] variance-covariance matrix&lt;/p&gt;&lt;p&gt;[2] sums-of-squares-and-cross-products matrix&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool uses the difference in cell values of a center cell and its neighbours (as specified by the kernel) as features for a Principal Component Analysis (PCA). This method has been used by Thomas and Herzfeld (2004) to parameterize the topography for a subsequent regionalization of climate variables with the principal components as predictors in a regression model. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>A.Thomas, O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

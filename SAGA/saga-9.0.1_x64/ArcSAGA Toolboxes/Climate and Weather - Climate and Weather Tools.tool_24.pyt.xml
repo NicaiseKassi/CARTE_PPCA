@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_24" displayname="Soil Water Balance (Days)">
+    <parameters>
+      <param name="TAVG" displayname="Mean Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Mean Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TMIN" displayname="Minimum Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Minimum Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TMAX" displayname="Maximum Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Maximum Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PSUM" displayname="Precipitation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Precipitation&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SNOW" displayname="Snow Depth" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Snow Depth&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SW_0" displayname="Soil Water (Upper Layer)" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Soil Water (Upper Layer)&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SW_1" displayname="Soil Water (Lower Layer)" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Soil Water (Lower Layer)&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LAT_GRID" displayname="Latitude" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Latitude&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LAT_CONST" displayname="Default Latitude" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default Latitude&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: -90.000000&lt;/p&gt;&lt;p&gt;Maximum: 90.000000&lt;/p&gt;&lt;p&gt;Default: 50.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWC" displayname="Soil Water Capacity of Profile" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Soil Water Capacity of Profile&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Total soil water capacity (mm H2O).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWC_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 220.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWC_SURFACE" displayname="Top Soil Water Capacity" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Top Soil Water Capacity&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 30.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SWT_RESIST" displayname="Transpiration Resistance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Transpiration Resistance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.010000&lt;/p&gt;&lt;p&gt;Default: 0.500000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESET" displayname="Reset" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Reset&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DAY" displayname="Start Day" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Start Day&lt;/p&gt;&lt;p&gt;Date&lt;/p&gt;&lt;p&gt;Default: 2023-04-21&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>A Simple Soil Water Balance Model</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

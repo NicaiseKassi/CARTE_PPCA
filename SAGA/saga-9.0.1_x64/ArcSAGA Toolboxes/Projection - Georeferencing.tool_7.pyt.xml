@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_7" displayname="Georeference with Coordinate Grids">
+    <parameters>
+      <param name="GRID_X" displayname="X Coordinates" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;X Coordinates&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRID_Y" displayname="Y Coordinates" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Y Coordinates&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRIDS" displayname="Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Grids" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESAMPLING" displayname="Resampling" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Resampling&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Nearest Neighbour&lt;/p&gt;&lt;p&gt;[1] Bilinear Interpolation&lt;/p&gt;&lt;p&gt;[2] Bicubic Spline Interpolation&lt;/p&gt;&lt;p&gt;[3] B-Spline Interpolation&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BYTEWISE" displayname="Bytewise Interpolation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bytewise Interpolation&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KEEP_TYPE" displayname="Preserve Data Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Preserve Data Type&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Georeferencing grids of grids two coordinate grids (x/y) that provide for each grid cell the targeted coordinate. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

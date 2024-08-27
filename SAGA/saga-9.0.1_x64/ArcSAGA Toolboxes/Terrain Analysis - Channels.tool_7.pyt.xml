@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_7" displayname="Valley Depth">
+    <parameters>
+      <param name="ELEVATION" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="VALLEY_DEPTH" displayname="Valley Depth" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Valley Depth&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RIDGE_LEVEL" displayname="Ridge Level" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Ridge Level&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLD" displayname="Tension Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tension Threshold&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Maximum change in elevation units (e.g. meter), iteration is stopped once maximum change reaches this threshold.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXITER" displayname="Maximum Iterations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Iterations&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Maximum number of iterations, ignored if set to zero&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NOUNDERGROUND" displayname="Keep Ridge Level above Surface" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Keep Ridge Level above Surface&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ORDER" displayname="Ridge Detection Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Ridge Detection Threshold&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Maximum: 7&lt;/p&gt;&lt;p&gt;Default: 4&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Valley depth is calculated as difference between the elevation and an interpolated ridge level. Ridge level interpolation uses the algorithm implemented in the 'Vertical Distance to Channel Network' tool. It performs the following steps:
+ - Definition of ridge cells (using Strahler order on the inverted DEM).
+ - Interpolation of the ridge level.
+ - Subtraction of the original elevations from the ridge level.
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

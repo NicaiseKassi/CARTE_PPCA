@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_11" displayname="Textural Features">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ASM" displayname="Angular Second Moment" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Angular Second Moment&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONTRAST" displayname="Contrast" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Contrast&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CORRELATION" displayname="Correlation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Correlation&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="VARIANCE" displayname="Variance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Variance&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="IDM" displayname="Inverse Diff Moment" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Inverse Diff Moment&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SUM_AVERAGE" displayname="Sum Average" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sum Average&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SUM_ENTROPY" displayname="Sum Entropy" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sum Entropy&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SUM_VARIANCE" displayname="Sum Variance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sum Variance&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ENTROPY" displayname="Entropy" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Entropy&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIF_VARIANCE" displayname="Difference Variance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Difference Variance&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIF_ENTROPY" displayname="Difference Entropy" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Difference Entropy&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MOC_1" displayname="Measure of Correlation-1" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Measure of Correlation-1&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MOC_2" displayname="Measure of Correlation-2" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Measure of Correlation-2&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIRECTION" displayname="Direction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Direction&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] all&lt;/p&gt;&lt;p&gt;[1] N-S&lt;/p&gt;&lt;p&gt;[2] NE-SW&lt;/p&gt;&lt;p&gt;[3] E-W&lt;/p&gt;&lt;p&gt;[4] SE-NW&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RADIUS" displayname="Radius" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Radius&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;kernel radius in cells&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DISTANCE" displayname="Distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Distance&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;The distance between two samples.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAX_CATS" displayname="Maximum Number of Categories" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Number of Categories&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 2&lt;/p&gt;&lt;p&gt;Default: 256&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Textural features. This tool is based on the GRASS GIS implementation by Carmine Basco (r.texture). </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

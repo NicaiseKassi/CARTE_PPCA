@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_9" displayname="Local Minima and Maxima">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MINIMA" displayname="Minima" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Minima&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXIMA" displayname="Maxima" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Maxima&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="IDENTITY" displayname="Identical Values" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Identical Values&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;If set, neighbour cells with the same value as the center cell are interpreted to be lower for minima and higher for maxima identification.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ABSOLUTE" displayname="Absolute" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Absolute&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;If set, only the grid's absolute maximum/minimum point is returned.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BOUNDARY" displayname="Boundary Cells" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Boundary Cells&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Extracts local grid value minima and maxima of to vector points.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2009</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

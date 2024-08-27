@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_28" displayname="Multi-Scale Topographic Position Index (TPI)">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TPI" displayname="Topographic Position Index" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Topographic Position Index&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE_MIN" displayname="Minimum Scale" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Scale&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;kernel radius in cells&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE_MAX" displayname="Maximum Scale" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Scale&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 8&lt;/p&gt;&lt;p&gt;kernel radius in cells&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE_NUM" displayname="Number of Scales" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Scales&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 2&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Topographic Position Index (TPI) calculation as proposed by Guisan et al. (1999).
+
+This implementation calculates the TPI for different scales and integrates these into one single grid. The hierarchical integration is achieved by starting with the standardized TPI values of the largest scale, then adding standardized values from smaller scales where the (absolute) values from the smaller scale exceed those from the larger scale. This integration scheme has been proposed by N. Zimmermann.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

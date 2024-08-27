@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_8" displayname="Grid Cell Area Covered by Polygons">
+    <parameters>
+      <param name="POLYGONS" displayname="Polygons" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Polygons&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] cell wise&lt;/p&gt;&lt;p&gt;[1] polygon wise&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Choose cell wise, if you have not many polygons. Polygon wise will show much better performance, if you have many (small) polygons.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Output" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Output&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] area&lt;/p&gt;&lt;p&gt;[1] percentage&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SELECTION" displayname="Only Selected Polygons" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Only Selected Polygons&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AREA" displayname="Area of Coverage" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Area of Coverage&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool calculates for each grid cell of the selected grid system the area that is covered by the input polygons layer. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

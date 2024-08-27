@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_21" displayname="Terrain Surface Convexity">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONVEXITY" displayname="Convexity" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Convexity&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL" displayname="Laplacian Filter Kernel" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Laplacian Filter Kernel&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] conventional four-neighbourhood&lt;/p&gt;&lt;p&gt;[1] conventional eight-neihbourhood&lt;/p&gt;&lt;p&gt;[2] eight-neihbourhood (distance based weighting)&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TYPE" displayname="Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] convexity&lt;/p&gt;&lt;p&gt;[1] concavity&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EPSILON" displayname="Flat Area Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Flat Area Threshold&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE" displayname="Scale (Cells)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Scale (Cells)&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 10&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] counting cells&lt;/p&gt;&lt;p&gt;[1] resampling&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_WEIGHTING" displayname="Weighting Function" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weighting Function&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] no distance weighting&lt;/p&gt;&lt;p&gt;[1] inverse distance to a power&lt;/p&gt;&lt;p&gt;[2] exponential&lt;/p&gt;&lt;p&gt;[3] gaussian&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_IDW_POWER" displayname="Power" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Power&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_BANDWIDTH" displayname="Bandwidth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bandwidth&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Bandwidth for exponential and Gaussian weighting&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Terrain surface convexity as proposed by Iwahashi & Pike (2007) for subsequent terrain classification.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

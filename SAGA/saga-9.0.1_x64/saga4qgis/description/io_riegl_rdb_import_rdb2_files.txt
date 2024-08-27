@@ -1,0 +1,15 @@
+Import RDB2 Files|0
+io_riegl_rdb
+QgsProcessingParameterFile|FILES|Input Files|QgsProcessingParameterFile.File|None|False
+QgsProcessingParameterPointCloudDestination|POINTS|Point Clouds|None|False
+QgsProcessingParameterBoolean|id|Point Source ID|False
+QgsProcessingParameterBoolean|ts|Time Stamp|False
+QgsProcessingParameterBoolean|ampl|Amplitude|False
+QgsProcessingParameterBoolean|refl|Reflectance|False
+QgsProcessingParameterBoolean|dev|Deviation|False
+QgsProcessingParameterBoolean|pw|Pulse Width|False
+QgsProcessingParameterBoolean|t_idx|Target Index|False
+QgsProcessingParameterBoolean|t_cnt|Target Count|False
+QgsProcessingParameterBoolean|class|Class|False
+QgsProcessingParameterBoolean|rgba|RGP Color|False
+QgsProcessingParameterBoolean|epsg|Load EPSG Geo-Tag|False

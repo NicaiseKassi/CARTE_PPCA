@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_6" displayname="Burn Stream Network into DEM">
+    <parameters>
+      <param name="DEM" displayname="DEM" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;DEM&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BURN" displayname="Processed DEM" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Processed DEM&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STREAM" displayname="Streams" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Streams&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FLOWDIR" displayname="Flow Direction" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Flow Direction&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] simply decrease cell's value by epsilon&lt;/p&gt;&lt;p&gt;[1] lower cell's value to neighbours minimum value minus epsilon&lt;/p&gt;&lt;p&gt;[2] trace stream network downstream&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EPSILON" displayname="Epsilon" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Epsilon&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Burns a stream network into a Digital Elevation Model (DEM). Stream cells have to be coded with valid data values, all other cells should be set to no data value. First two methods decrease . The third method ensures a steady downstream gradient. An elevation decrease is only applied, if a downstream cell is equally high or higher. You should provide a grid with flow directions for determination of downstream cells. The 'Sink Drainage Route Detection' tool offers such flow directions. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2011</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

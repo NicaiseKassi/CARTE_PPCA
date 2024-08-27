@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_24" displayname="Soil Water Capacity">
+    <parameters>
+      <param name="SAND" displayname="Sand" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Sand&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[%]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SAND_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 100.000000&lt;/p&gt;&lt;p&gt;Default: 15.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SILT" displayname="Silt" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Silt&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[%]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SILT_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 100.000000&lt;/p&gt;&lt;p&gt;Default: 37.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLAY" displayname="Clay" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Clay&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[%]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLAY_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 100.000000&lt;/p&gt;&lt;p&gt;Default: 48.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CORG" displayname="Soil Organic Carbon" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Soil Organic Carbon&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[permille]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CORG_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 1000.000000&lt;/p&gt;&lt;p&gt;Default: 15.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BULK" displayname="Bulk Density" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Bulk Density&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[kg/m_]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BULK_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 100.000000&lt;/p&gt;&lt;p&gt;Maximum: 2650.000000&lt;/p&gt;&lt;p&gt;Default: 1350.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CEC" displayname="Cation Exchange Capacity" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Cation Exchange Capacity&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[cmol/kg]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CEC_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 45.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PH" displayname="pH" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;pH&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PH_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 14.000000&lt;/p&gt;&lt;p&gt;Default: 6.400000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FC" displayname="Field Capacity" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Field Capacity&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PWP" displayname="Permanent Wilting Point" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Permanent Wilting Point&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THETA_S" displayname="Water Capacity at Saturation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Water Capacity at Saturation&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UNIT" displayname="Output Unit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Output Unit&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] cubic-meter per cubic-meter&lt;/p&gt;&lt;p&gt;[1] percentage of volume&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FUNCTION" displayname="Pedo-Transfer Function" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Pedo-Transfer Function&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Hodnett & Tomasella 2002&lt;/p&gt;&lt;p&gt;[1] Toth et al. 2015&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PSI_FC" displayname="Soil Moisture Potential" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Soil Moisture Potential&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 316.000000&lt;/p&gt;&lt;p&gt;[hPa]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PSI_PWP" displayname="Soil Moisture Potential" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Soil Moisture Potential&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 15850.000000&lt;/p&gt;&lt;p&gt;[hPa]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ADJUST" displayname="Adjustments" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Adjustments&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Specifies whether to correct values of textures and bulk density to avoid creating nonsensical values.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="USERDEF" displayname="User Defined Coefficients" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;User Defined Coefficients&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COEFFICIENTS" displayname="User Defined Coefficients" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;User Defined Coefficients&lt;/p&gt;&lt;p&gt;Static table&lt;/p&gt;&lt;p&gt;4 Fields:&lt;/p&gt;&lt;p&gt;- 1. [8 byte floating point number] ln(alpha)&lt;/p&gt;&lt;p&gt;- 2. [8 byte floating point number] ln(n)&lt;/p&gt;&lt;p&gt;- 3. [8 byte floating point number] theta s&lt;/p&gt;&lt;p&gt;- 4. [8 byte floating point number] theta r&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool derives the soil water capacity for the given soil moisture potentials (psi) based on pedo-transfer functions.
+Suggested psi values for field capacity estimation range between 60 hPa (pF=1.8) and 316 hPa (pF=2.5). For permanent wilting point estimation take a psi value of about 15850 hPa (pF=4.2). This tool re-implements the R-script AWCPTF by Hengl as well as the regression approach by Toth et al. (2015). See Hengl et al. (2017), Woesten & Verzandvoort (2013) and Toth et al. (2015) for more details. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2020</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

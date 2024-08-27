@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_6" displayname="Polygon Shape Indices">
+    <parameters>
+      <param name="SHAPES" displayname="Shapes" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Shapes&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INDEX" displayname="Shape Indices" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Shape Indices&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Polygon shapefile with the calculated indices.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DMAX" displayname="Maximum Diameter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Diameter&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Line shapefile showing the maximum diameter.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GYROS" displayname="Diameter of Gyration" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Diameter of Gyration&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FERET" displayname="Feret Diameters" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Feret Diameters&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FERET_DIRS" displayname="Number of Directions" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Directions&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 2&lt;/p&gt;&lt;p&gt;Default: 18&lt;/p&gt;&lt;p&gt;Number of directions (0-90) to be analyzed.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool calculates various indices describing the shape of polygons, mostly based on area, perimeter and maximum diameter. If the optional output 'Shape Indices' is not created, the tool attaches the attributes to the input dataset. Otherwise a new dataset is created and attributes existing in the input dataset are dropped.&lt;ul&gt;&lt;li&gt;&lt;b&gt;A&lt;/b&gt; area&lt;/li&gt;&lt;li&gt;&lt;b&gt;P&lt;/b&gt; perimeter&lt;/li&gt;&lt;li&gt;&lt;b&gt;P/A&lt;/b&gt; interior edge ratio&lt;/li&gt;&lt;li&gt;&lt;b&gt;P/sqrt(A)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Deqpc&lt;/b&gt; equivalent projected circle diameter (=2*sqrt(A/pi))&lt;/li&gt;&lt;li&gt;&lt;b&gt;Sphericity&lt;/b&gt; the ratio of the perimeter of the equivalent circle to the real perimeter (=(2*sqrt(A*pi))/P)&lt;/li&gt;&lt;li&gt;&lt;b&gt;Shape Index&lt;/b&gt; the inverse of the sphericity (=P/(2*sqrt(A*pi)))&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax&lt;/b&gt; maximum diameter calculated as maximum distance between two polygon part's vertices&lt;/li&gt;&lt;li&gt;&lt;b&gt;DmaxDir&lt;/b&gt; direction of maximum diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax/A&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax/sqrt(A)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dgyros&lt;/b&gt; diameter of gyration, calculated as twice the maximum vertex distance to its polygon part's centroid&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmax&lt;/b&gt; maximum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;FmaxDir&lt;/b&gt; direction of the maximum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmin&lt;/b&gt; minimum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;FminDir&lt;/b&gt; direction of the minimum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmean&lt;/b&gt; mean Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmax90&lt;/b&gt; the Feret diameter measured at an angle of 90 degrees to that of the Fmax direction&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmin90&lt;/b&gt; the Feret diameter measured at an angle of 90 degrees to that of the Fmin direction&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fvol&lt;/b&gt; the diameter of a sphere having the same volume as the cylinder constructed by Fmin as the cylinder diameter and Fmax as its length&lt;/li&gt;&lt;/ul&gt;</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2008</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

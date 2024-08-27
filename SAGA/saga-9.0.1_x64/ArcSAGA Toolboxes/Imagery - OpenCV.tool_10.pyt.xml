@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_10" displayname="Artificial Neural Network Classification (OpenCV)">
+    <parameters>
+      <param name="FEATURES" displayname="Features" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Features&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NORMALIZE" displayname="Normalize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Normalize&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLASSES" displayname="Classification" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Classification&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLASSES_LUT" displayname="Look-up Table" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Look-up Table&lt;/p&gt;&lt;p&gt;Table, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A reference list of the grid values that have been assigned to the training classes.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MODEL_LOAD" displayname="Load Model" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Load Model&lt;/p&gt;&lt;p&gt;File path&lt;/p&gt;&lt;p&gt;Use a model previously stored to file.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRAIN_AREAS" displayname="Training Areas" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Training Areas&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRAIN_CLASS" displayname="Class Identifier" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Class Identifier&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRAIN_BUFFER" displayname="Buffer Size" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Buffer Size&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;For non-polygon type training areas, creates a buffer with a diameter of specified size.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MODEL_SAVE" displayname="Save Model" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Save Model&lt;/p&gt;&lt;p&gt;File path&lt;/p&gt;&lt;p&gt;Stores model to file to be used for subsequent classifications instead of training areas.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_LAYERS" displayname="Number of Layers" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Layers&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;&lt;p&gt;You can specify the number of layers in the network (not including input and output layer).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_NEURONS" displayname="Number of Neurons" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Neurons&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;&lt;p&gt;You can specify the number of neurons in each layer of the network.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_MAXITER" displayname="Maximum Number of Iterations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Number of Iterations&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 300&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_EPSILON" displayname="Error Change (Epsilon)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Error Change (Epsilon)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Termination criteria of the training algorithm. You can specify how much the error could change between the iterations to make the algorithm continue (epsilon).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_ACTIVATION" displayname="Activation Function" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Activation Function&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Identity&lt;/p&gt;&lt;p&gt;[1] Sigmoid&lt;/p&gt;&lt;p&gt;[2] Gaussian&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_ACT_ALPHA" displayname="Function's Alpha" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Function's Alpha&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_ACT_BETA" displayname="Function's Beta" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Function's Beta&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_PROPAGATION" displayname="Training Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Training Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] resilient propagation&lt;/p&gt;&lt;p&gt;[1] back propagation&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_RP_DW0" displayname="Initial Update Value" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Initial Update Value&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_RP_DW_PLUS" displayname="Increase Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Increase Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 1.010000&lt;/p&gt;&lt;p&gt;Default: 1.200000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_RP_DW_MINUS" displayname="Decrease Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Decrease Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.010000&lt;/p&gt;&lt;p&gt;Maximum: 0.990000&lt;/p&gt;&lt;p&gt;Default: 0.500000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_RP_DW_MIN" displayname="Lower Value Update Limit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Lower Value Update Limit&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.010000&lt;/p&gt;&lt;p&gt;Default: 0.100000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_RP_DW_MAX" displayname="Upper Value Update Limit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Upper Value Update Limit&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 1.010000&lt;/p&gt;&lt;p&gt;Default: 1.100000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_BP_DW" displayname="Weight Gradient Term" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weight Gradient Term&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.100000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ANN_BP_MOMENT" displayname="Moment Term" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Moment Term&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.100000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Integration of the OpenCV Machine Learning library for Artificial Neural Network classification of gridded features.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016, L.Piras (c) 2013</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

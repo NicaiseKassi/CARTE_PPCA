@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_1" displayname="TOBIA">
+    <parameters>
+      <param name="A" displayname="Slope grid (rad)" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Slope grid (rad)&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;A slope angle grid (in radians)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B" displayname="Aspect grid (rad)" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Aspect grid (rad)&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;A aspect angle grid (in radians)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="C" displayname="Dip grid (degrees) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Dip grid (degrees) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing the dip of the structure plane (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="D" displayname="Dip direction grid (degrees) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Dip direction grid (degrees) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing the dip direction of the structure plane (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fB" displayname="Global structure dip (degrees)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Global structure dip (degrees)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 45.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fC" displayname="Global structure dip direction (degrees)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Global structure dip direction (degrees)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 90.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="E" displayname="TOBIA classes" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;TOBIA classes&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Resulting TOBIA classes (1-7) grid&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="F" displayname="TOBIA index" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;TOBIA index&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Resulting TOBIA index (-) grid&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>
+This tool computes both a continuous and a categorical TOBIA (Topography Bedding Intersection Angle) Index according to Meentemeyer & Moody (2000) For computation, a slope and a aspect raster (both in radians) determining slope face orientations are required. The categorical TOBIA classifies the alignment of a geological structure to Topography into seven classes:
+0) Underdip slope
+1) Dip slope
+2) Overdip slope
+3) Steepened escarpmemt
+4) Normal escarpment
+5) Subdued escarpment
+6) Orthoclinal slope
+The continuous TOBIA index ranges from -1 to 1 (parallel orientation)
+The structure TOBIA should be calculated with can be set either distributed (through dip direction and dip grids, in degrees!), or globally using integers (dip and dip direction, in degrees!). The tool creates a TOBIA class integer grid, and (optionally) a continuous TOBIA index grid.
+
+Reference: &lt;a href="http://www.sciencedirect.com/science/article/pii/S009830040000011X"&gt;Meentemeyer R. K., Moody A. (2000). Automated mapping of conformity between topographic and geological surfaces. Computers & Geosciences, 26, 815 - 829&lt;/a&gt;.
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>A. G&uuml;nther (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

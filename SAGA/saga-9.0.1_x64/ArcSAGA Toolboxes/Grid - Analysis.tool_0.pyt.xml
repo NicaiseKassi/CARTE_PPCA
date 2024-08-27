@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_0" displayname="Accumulated Cost">
+    <parameters>
+      <param name="DEST_TYPE" displayname="Destinations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Destinations&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Points&lt;/p&gt;&lt;p&gt;[1] Grid&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEST_POINTS" displayname="Destinations" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Destinations&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEST_GRID" displayname="Destinations" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Destinations&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COST" displayname="Local Cost" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Local Cost&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COST_BMIN" displayname="Minimum Cost" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Cost&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Zero cost works like a barrier. Use this option to define a minimum cost applied everywhere where the supplied local cost falls below this value.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COST_MIN" displayname="Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.010000&lt;/p&gt;&lt;p&gt;Zero cost works like a barrier. Use this option to define a minimum cost applied everywhere where the supplied local cost falls below this value.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIR_MAXCOST" displayname="Direction of Maximum Cost" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Direction of Maximum Cost&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIR_UNIT" displayname="Units of Direction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Units of Direction&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] radians&lt;/p&gt;&lt;p&gt;[1] degree&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIR_K" displayname="K Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;K Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;&lt;p&gt;effective friction = stated friction^f , where f = cos(DifAngle)^k.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ACCUMULATED" displayname="Accumulated Cost" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Accumulated Cost&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ALLOCATION" displayname="Allocation" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Allocation&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLD" displayname="Threshold for different route" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold for different route&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Calculation of accumulated cost, either isotropic or anisotropic, if direction of maximum cost is specified. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Victor Olaya (c) 2004</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

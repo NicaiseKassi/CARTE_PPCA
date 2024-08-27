@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="Cross Profiles">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINES" displayname="Lines" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Lines&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PROFILES" displayname="Cross Profiles" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Cross Profiles&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIST_LINE" displayname="Profile Distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Profile Distance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;&lt;p&gt;The distance of each cross profile along the lines.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIST_PROFILE" displayname="Profile Length" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Profile Length&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;&lt;p&gt;The length of each cross profile.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NUM_PROFILE" displayname="Profile Samples" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Profile Samples&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 3&lt;/p&gt;&lt;p&gt;Default: 11&lt;/p&gt;&lt;p&gt;The number of profile points per cross profile.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INTERPOLATION" displayname="Interpolation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Interpolation&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Nearest Neighbour&lt;/p&gt;&lt;p&gt;[1] Bilinear Interpolation&lt;/p&gt;&lt;p&gt;[2] Bicubic Spline Interpolation&lt;/p&gt;&lt;p&gt;[3] B-Spline Interpolation&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Output" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Output&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] vertices&lt;/p&gt;&lt;p&gt;[1] attributes&lt;/p&gt;&lt;p&gt;[2] vertices and attributes&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Create cross profiles from a grid based DEM for given lines.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2006</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="Mosaicking">
+    <parameters>
+      <param name="GRIDS" displayname="Grids" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FILE_LIST" displayname="Input File List" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Input File List&lt;/p&gt;&lt;p&gt;File path, CMD&lt;/p&gt;&lt;p&gt;A text file with the full path to an input grid on each line&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NAME" displayname="Name" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Name&lt;/p&gt;&lt;p&gt;Text&lt;/p&gt;&lt;p&gt;Default: Mosaic&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TYPE" displayname="Data Storage Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Data Storage Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] 1 bit&lt;/p&gt;&lt;p&gt;[1] 1 byte unsigned integer&lt;/p&gt;&lt;p&gt;[2] 1 byte signed integer&lt;/p&gt;&lt;p&gt;[3] 2 byte unsigned integer&lt;/p&gt;&lt;p&gt;[4] 2 byte signed integer&lt;/p&gt;&lt;p&gt;[5] 4 byte unsigned integer&lt;/p&gt;&lt;p&gt;[6] 4 byte signed integer&lt;/p&gt;&lt;p&gt;[7] 4 byte floating point&lt;/p&gt;&lt;p&gt;[8] 8 byte floating point&lt;/p&gt;&lt;p&gt;[9] same as first grid in list&lt;/p&gt;&lt;p&gt;Default: 9&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESAMPLING" displayname="Resampling" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Resampling&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Nearest Neighbour&lt;/p&gt;&lt;p&gt;[1] Bilinear Interpolation&lt;/p&gt;&lt;p&gt;[2] Bicubic Spline Interpolation&lt;/p&gt;&lt;p&gt;[3] B-Spline Interpolation&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OVERLAP" displayname="Overlapping Areas" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Overlapping Areas&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] first&lt;/p&gt;&lt;p&gt;[1] last&lt;/p&gt;&lt;p&gt;[2] minimum&lt;/p&gt;&lt;p&gt;[3] maximum&lt;/p&gt;&lt;p&gt;[4] mean&lt;/p&gt;&lt;p&gt;[5] blend boundary&lt;/p&gt;&lt;p&gt;[6] feathering&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BLEND_DIST" displayname="Blending Distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Blending Distance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;&lt;p&gt;blending distance given in map units&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BLEND_BND" displayname="Blending Boundary" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Blending Boundary&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] valid data cells&lt;/p&gt;&lt;p&gt;[1] grid boundaries&lt;/p&gt;&lt;p&gt;[2] vertical grid boundaries&lt;/p&gt;&lt;p&gt;[3] horizontal grid boundaries&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;blending boundary for distance calculation&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MATCH" displayname="Match" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Match&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] none&lt;/p&gt;&lt;p&gt;[1] match histogram of first grid in list&lt;/p&gt;&lt;p&gt;[2] match histogram of overlapping area&lt;/p&gt;&lt;p&gt;[3] regression&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_OUT_GRID" displayname="Target Grid" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Target Grid&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool allows one to merge multiple grids into one single grid. This involves resampling if the input grids have different cell sizes or are not aligned to each other. Besides different resampling methods, the tool provides several options on how to handle overlapping areas. It is also possible to apply a histogram matching. 
+
+In order to be able to also merge a large amount of grids, which, for example, would exceed the maximum command line length, the tools has the option to provide a file list as input (instead of using the input grid list). This is a text file with the full path to an input grid on each line. Please note the limitations: (i) the target grid system is set automatically in this case (the extent is calculated from all inputs and the cell size is set to the smallest one detected) and (ii) the input grids must still fit into memory, i.e. are all loaded at once.
+
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2003-17</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

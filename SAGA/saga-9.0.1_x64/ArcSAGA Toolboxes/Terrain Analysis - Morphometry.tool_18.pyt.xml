@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_18" displayname="Topographic Position Index (TPI)">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TPI" displayname="Topographic Position Index" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Topographic Position Index&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STANDARD" displayname="Standardize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Standardize&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RADIUS_MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;kernel radius in map units; defines an annulus if inner radius is greater than zero&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RADIUS_MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 100.000000&lt;/p&gt;&lt;p&gt;kernel radius in map units; defines an annulus if inner radius is greater than zero&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_WEIGHTING" displayname="Weighting Function" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weighting Function&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] no distance weighting&lt;/p&gt;&lt;p&gt;[1] inverse distance to a power&lt;/p&gt;&lt;p&gt;[2] exponential&lt;/p&gt;&lt;p&gt;[3] gaussian&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_IDW_POWER" displayname="Power" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Power&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_BANDWIDTH" displayname="Bandwidth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bandwidth&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Bandwidth for exponential and Gaussian weighting&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Topographic Position Index (TPI) calculation as proposed by Guisan et al. (1999). This is literally the same as the difference to the mean calculation (residual analysis) proposed by Wilson & Gallant (2000). The bandwidth parameter for distance weighting is given as percentage of the (outer) radius.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2011</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

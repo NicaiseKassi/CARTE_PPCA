@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_4" displayname="WEDGEFAIL">
+    <parameters>
+      <param name="DEM" displayname="DEM" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;DEM&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;A DEM&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="C" displayname="Dip/Plunge direction grid (degree) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Dip/Plunge direction grid (degree) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A dip- or plunge direction grid (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="D" displayname="Dip/Plunge grid (degree) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Dip/Plunge grid (degree) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A dip- or plunge grid (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Emin" displayname="Min friction angle grid (degree) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Min friction angle grid (degree) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A minimum discontinuity friction angle grid (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Emax" displayname="Max friction angle grid (degree) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Max friction angle grid (degree) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A maximum discontinuity friction angle grid (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fC" displayname="Global dip/plunge direction (degree)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Global dip/plunge direction (degree)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fD" displayname="Global dip/plunge (degree)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Global dip/plunge (degree)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 35.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fEmin" displayname="Min global friction angle (degree)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Min global friction angle (degree)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 35.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fEmax" displayname="Max global friction angle (degree)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Max global friction angle (degree)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 35.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ff" displayname="Cone radius (degree)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cone radius (degree)&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Radius of optional cone variance (in degrees)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="F" displayname="Failures" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Failures&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Resulting failure cells (-) grid&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fI" displayname="Parameter sampling runs" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Parameter sampling runs&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Number of sampling cycles&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Mode" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Mode&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Slide&lt;/p&gt;&lt;p&gt;[1] Topple&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Set failure mode&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>
+This tool determines terrain elements where failure (slide- or topple movements) on geological discontinuies are kinematically possible through the spatial application of common frictional feasibility criteria (G&uuml;nther et al. 2012 and references therein). Both the orientation of slope elements specified through aspect- and dip grids (in radians) are required together with the orientation of one planar structure defined through global- or grid dip direction and dip data, or two planar structures defined by plunge direction and plunge information of their intersection line (in degrees). The shear strength of the discontinuities is specified using global or grid-based friction angle data. Optionally, a cone value can be set allowing for some variance in discontinuity dip orientations. The tool operates in slide (testing for plane and wedge sliding) or topple (testing for plane and wedge toppling) modes.
+
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>A. G&uuml;nther (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

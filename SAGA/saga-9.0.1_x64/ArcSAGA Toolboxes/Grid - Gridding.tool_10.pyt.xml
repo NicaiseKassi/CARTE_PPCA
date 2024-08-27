@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_10" displayname="Polygon Categories to Grid">
+    <parameters>
+      <param name="POLYGONS" displayname="Polygons" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Polygons&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FIELD" displayname="Category" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Category&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;The attribute field that specifies the category a polygon belongs to.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] cell wise&lt;/p&gt;&lt;p&gt;[1] polygon wise&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Choose cell wise, if you have not many polygons. Polygon wise will show much better performance, if you have many (small) polygons.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MULTIPLE" displayname="Multiple Polygons" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Multiple Polygons&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] minimum coverage&lt;/p&gt;&lt;p&gt;[1] maximum coverage&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Output value for cells that intersect wiht more than one polygon.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLASSES" displayname="Classification" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Classification&lt;/p&gt;&lt;p&gt;Table, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Classification look-up table for interpretation of resulting grid cell values.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CATEGORY" displayname="Category" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Category&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COVERAGE" displayname="Coverage" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Coverage&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool has been designed to rasterize polygons representing categories and selects that category, which has maximum coverage of a cell. The advantage using this tool (instead the more simple 'Shapes to Grid' or 'Polygons to Grid' tools) is that it summarizes all polygon coverages belonging to the same category. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2018</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_0" displayname="ISODATA Clustering for Grids">
+    <parameters>
+      <param name="FEATURES" displayname="Features" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Features&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLUSTER" displayname="Clusters" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Clusters&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STATISTICS" displayname="Statistics" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Statistics&lt;/p&gt;&lt;p&gt;Table, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NORMALIZE" displayname="Normalize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Normalize&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ITERATIONS" displayname="Maximum Number of Iterations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Number of Iterations&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 3&lt;/p&gt;&lt;p&gt;Default: 20&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLUSTER_INI" displayname="Initial Number of Clusters" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Initial Number of Clusters&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 5&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLUSTER_MAX" displayname="Maximum Number of Clusters" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Number of Clusters&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 3&lt;/p&gt;&lt;p&gt;Default: 16&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SAMPLES_MIN" displayname="Minimum Number of Samples in a Cluster" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Number of Samples in a Cluster&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 2&lt;/p&gt;&lt;p&gt;Default: 5&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INITIALIZE" displayname="Start Partition" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Start Partition&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] random&lt;/p&gt;&lt;p&gt;[1] periodical&lt;/p&gt;&lt;p&gt;[2] keep values&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool executes the Isodata unsupervised classification - clustering algorithm. Isodata stands for Iterative Self-Organizing Data Analysis Techniques. This is a more sophisticated algorithm which allows the number of clusters to be automatically adjusted during the iteration by merging similar clusters and splitting clusters with large standard deviations. The tool is based on Christos Iosifidis' Isodata implementation. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

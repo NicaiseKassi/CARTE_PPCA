@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_11" displayname="Geographic Distances">
+    <parameters>
+      <param name="PLANAR" displayname="Segments" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Segments&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ORTHODROME" displayname="Great Elliptic" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Great Elliptic&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOXODROME" displayname="Loxodrome" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Loxodrome&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EPSILON" displayname="Epsilon" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Epsilon&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 100.000000&lt;/p&gt;&lt;p&gt;defines the maximum resolution [km] for the re-projected distance segments&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Calculates for all segments of the input lines the planar, great elliptic, and loxodrome distance and re-projects the latter two to the projection of the input lines. 
+Projection routines make use of the Proj.4 Cartographic Projections library.
+Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).
+Proj.4 Version is 7.2.1
+&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O. Conrad (c) 2015</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

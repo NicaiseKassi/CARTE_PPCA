@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="Change Vector Analysis">
+    <parameters>
+      <param name="A" displayname="Initial State" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Initial State&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B" displayname="Final State" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Final State&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIST" displayname="Distance" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Distance&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIR" displayname="Angle" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Angle&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool performs a change vector analysis (CVA) for the given input features. Input features are supplied as grid lists for initial and final state. In both lists features have to be given in the same order. Distance is measured as Euclidean distance in features space. When analyzing two features direction is calculated as angle (radians) by default. Otherwise direction is coded as the quadrant it points to in terms of feature space. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V.Olaya (c) 2004, O.Conrad (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

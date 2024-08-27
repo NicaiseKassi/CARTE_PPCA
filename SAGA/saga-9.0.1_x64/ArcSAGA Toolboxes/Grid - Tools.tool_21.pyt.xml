@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_21" displayname="Grids from Classified Grid and Table">
+    <parameters>
+      <param name="TABLE" displayname="Table" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Table&lt;/p&gt;&lt;p&gt;Table, input&lt;/p&gt;&lt;p&gt;The table with the (numeric) data values for each class. The tool creates a grid for each table column (besides the ID).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ID_FIELD" displayname="Attribute" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Attribute&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;The attribute with the class IDs, used to link the table and the grid.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLASSES" displayname="Classes" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Classes&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;The grid encoded with the class IDs.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRIDS" displayname="Grids" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;The output grids, one grid for each table column.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool allows one to create grids from a classified grid and a corresponding lookup table. The table must provide an attribute with the class identifiers used in the grid, which is used to link the table and the grid. A grid is created for each additional attribute field found in the table.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Victor Olaya (c) 2004</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

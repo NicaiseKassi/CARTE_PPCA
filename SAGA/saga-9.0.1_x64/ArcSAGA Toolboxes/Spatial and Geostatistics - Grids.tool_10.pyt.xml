@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_10" displayname="Inverse Principal Components Rotation">
+    <parameters>
+      <param name="PCA" displayname="Principal Components" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Principal Components&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EIGEN" displayname="Eigen Vectors" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Eigen Vectors&lt;/p&gt;&lt;p&gt;Table, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRIDS" displayname="Grids" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Inverse principal components rotation for grids.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2011</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_2" displayname="Least Cost Paths">
+    <parameters>
+      <param name="SOURCE" displayname="Source Point(s)" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Source Point(s)&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;&lt;p&gt;Point shapefile with source point(s)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEM" displayname="Accumulated Cost Surface" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Accumulated Cost Surface&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="VALUES" displayname="Values" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Values&lt;/p&gt;&lt;p&gt;Grid list, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Allows writing cell values from additional grids to the output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="POINTS" displayname="Profile Points" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Profile Points&lt;/p&gt;&lt;p&gt;Shapes list, output&lt;/p&gt;&lt;p&gt;Least cost path profile points&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINE" displayname="Profile Lines" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Profile Lines&lt;/p&gt;&lt;p&gt;Shapes list, output&lt;/p&gt;&lt;p&gt;Least cost path profile lines&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool allows one to compute least cost path profile(s). It takes an accumulated cost surface grid and a point shapefile as input. Each point in the shapefile represents a source for which the least cost path is calculated.
+In case the point shapefile has more than one source point defined, a separate least cost path is calculated for each point. The tool outputs a point and a line shapefile for each least cost path.
+ The tool allows for optional input grids. The cell values of these grids along the least cost path are written to the outputs as additional table fields.
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O. Conrad, V. Olaya, V. Wichmann (c) 2004-2010</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_1" displayname="Coastal Profile Crossings">
+    <parameters>
+      <param name="LINES_SeaSide" displayname="SeaSide Profile Lines Layer" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;SeaSide Profile Lines Layer&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINES_LandSide" displayname="LandSide Profile Lines Layer" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;LandSide Profile Lines Layer&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINES_Coast" displayname="Coast Lines Layer" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Coast Lines Layer&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CROSSINGS_SEASIDE" displayname="Crossings at Sea Side" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Crossings at Sea Side&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CROSSINGS_LANDSIDE" displayname="Crossings at Land Side" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Crossings at Land Side&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ATTRIBUTES" displayname="Parent Attributes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Parent Attributes&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] index&lt;/p&gt;&lt;p&gt;[1] attributes&lt;/p&gt;&lt;p&gt;[2] index and attributes&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;attributes inherited by parent lines layers&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DISTANCES" displayname="Distances to profile start point" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Distances to profile start point&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;&lt;p&gt;Distances &gt; 0 if towards sea side (acretion) and &lt; 0 if towards landside (erosion)&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The Coastal Profile Crossings tool identifies the crossing points between coastal profiles along a reference coastline (from CliffMetrics Normal outputs) and any other coast lines and calculates the distance and coastline differences metrics. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Andres Payo & Olaf Conrad (c) 2020</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

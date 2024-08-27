@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_24" displayname="Point to Line Distances">
+    <parameters>
+      <param name="POINTS" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESULT" displayname="Result" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Result&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DISTANCES" displayname="Distances" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Distances&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINES" displayname="Lines" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Lines&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINE_ID" displayname="Identifier" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Identifier&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Point to Line Distances</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2020</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

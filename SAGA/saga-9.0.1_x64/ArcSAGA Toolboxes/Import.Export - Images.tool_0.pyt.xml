@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_0" displayname="Export Image (bmp, jpg, pcx, png, tif)">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE" displayname="Shade" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Shade&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FILE" displayname="Image File" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Image File&lt;/p&gt;&lt;p&gt;File path&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FILE_WORLD" displayname="Create World File" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Create World File&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Store georeference along image to an additional file.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FILE_KML" displayname="Create KML File" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Create KML File&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Expects that the input grid uses geographic coordinates.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NO_DATA" displayname="Set Transparency for No-Data" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Set Transparency for No-Data&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COLOURING" displayname="Coloring" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Coloring&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] histogram stretch to standard deviation&lt;/p&gt;&lt;p&gt;[1] histogram stretch to percentage range&lt;/p&gt;&lt;p&gt;[2] histogram stretch to value range&lt;/p&gt;&lt;p&gt;[3] lookup table&lt;/p&gt;&lt;p&gt;[4] rgb coded values&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COL_COUNT" displayname="Number of Colors" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Colors&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 100&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COL_REVERT" displayname="Revert Palette" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Revert Palette&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRADUATED" displayname="Graduated Colors" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Graduated Colors&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STDDEV" displayname="Standard Deviation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Standard Deviation&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINEAR_MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINEAR_MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 100.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STRETCH_MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STRETCH_MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 100.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE_MODE" displayname="Scaling" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Scaling&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] linear intervals&lt;/p&gt;&lt;p&gt;[1] increasing geometrical intervals&lt;/p&gt;&lt;p&gt;[2] decreasing geometrical intervals&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Scaling applied to coloring choices (i) grid's standard deviation, (ii) grid's value range, (iii) specified value range&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALE_LOG" displayname="Geometrical Interval Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Geometrical Interval Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.001000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LUT" displayname="Lookup Table" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Lookup Table&lt;/p&gt;&lt;p&gt;Static table&lt;/p&gt;&lt;p&gt;5 Fields:&lt;/p&gt;&lt;p&gt;- 1. [color] Color&lt;/p&gt;&lt;p&gt;- 2. [string] Name&lt;/p&gt;&lt;p&gt;- 3. [string] Description&lt;/p&gt;&lt;p&gt;- 4. [8 byte floating point number] Minimum&lt;/p&gt;&lt;p&gt;- 5. [8 byte floating point number] Maximum&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE_TRANS" displayname="Transparency" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Transparency&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 100.000000&lt;/p&gt;&lt;p&gt;Default: 75.000000&lt;/p&gt;&lt;p&gt;The transparency of the shade [%]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE_COLOURING" displayname="Histogram Stretch" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Histogram Stretch&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Linear&lt;/p&gt;&lt;p&gt;[1] Standard Deviation&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE_BRIGHT_MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Minimum and maximum [%], the range for histogram stretch.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE_BRIGHT_MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 100.000000&lt;/p&gt;&lt;p&gt;Minimum and maximum [%], the range for histogram stretch.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADE_STDDEV" displayname="Standard Deviation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Standard Deviation&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>With this tool you can save a grid to an image file. Optionally, a shade grid can be overlayed using the specified transparency and brightness adjustment. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2005</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

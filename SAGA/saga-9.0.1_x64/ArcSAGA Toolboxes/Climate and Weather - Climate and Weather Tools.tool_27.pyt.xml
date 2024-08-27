@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_27" displayname="Air Pressure Adjustment">
+    <parameters>
+      <param name="P" displayname="Air Pressure" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Air Pressure&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[hPa]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="P_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1013.250000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Z" displayname="Air Pressure Elevation" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Air Pressure Elevation&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[m]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Z_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T" displayname="Temperature" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Temperature&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[Celsius]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="L" displayname="Temperature Lapse Rate" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Temperature Lapse Rate&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[K/m]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="L_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.006500&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;[m]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="P_ADJ" displayname="Adjusted Air Pressure" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Adjusted Air Pressure&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool adjusts air pressure values to the elevation using the barometric formula. Default values refer to the international standard atmosphere. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2020</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

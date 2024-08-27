@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_13" displayname="Wind Effect Correction">
+    <parameters>
+      <param name="BOUNDARY" displayname="Boundary Layer" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Boundary Layer&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;The absolute vertical distance to the boundary layer.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="WIND" displayname="Wind Effect" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Wind Effect&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OBSERVED" displayname="Observations" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Observations&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Observations used for local scaling factor calibration (e.g. precipitation, cloudiness).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B_GRID" displayname="Calibrated Scaling Factor" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Calibrated Scaling Factor&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Calibrated scaling factor used in the wind effect correction.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="WINDCORR" displayname="Corrected Wind Effect" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Corrected Wind Effect&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B_SOURCE" displayname="Scaling Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Scaling Factor&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] constant&lt;/p&gt;&lt;p&gt;[1] calibrate&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B_CONST" displayname="Constant Scaling Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Constant Scaling Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.010000&lt;/p&gt;&lt;p&gt;Constant scaling factor used in the wind effect correction.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B_MAX" displayname="Maximum Scaling Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Scaling Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.050000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B_STEPS" displayname="Number of Steps" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Steps&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 10&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_TYPE" displayname="Kernel Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Square&lt;/p&gt;&lt;p&gt;[1] Circle&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Kernel specification used to request observations for local scaling factor calibration.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_SIZE" displayname="Kernel Size" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Size&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;&lt;p&gt;Kernel specification used to request observations for local scaling factor calibration.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Wind effect correction using generalized logistic functions.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>D.N.Karger, O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

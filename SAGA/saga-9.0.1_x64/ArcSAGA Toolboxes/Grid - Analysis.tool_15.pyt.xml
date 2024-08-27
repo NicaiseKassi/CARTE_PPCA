@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_15" displayname="Accumulation Functions">
+    <parameters>
+      <param name="SURFACE" displayname="Surface" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Surface&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Surface used to derive the LDD network, e.g. a DTM.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INPUT" displayname="Input" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Grid with the input values to accumulate.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STATE_IN" displayname="State t" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;State t&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Grid describing the state of each cell at timestep t.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OPERATION_GRID" displayname="Operation Grid" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Operation Grid&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Grid encoding the mode of operation per grid cell. Can be used instead of a global setting (\"Operation\" choice). Operations use the same identifers as the \"Operation\" choice parameter [0-4].&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONTROL" displayname="Operation Control" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Operation Control&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Depending on the mode of operation either transport capacity, transport fraction, threshold value or trigger value.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CTRL_LINEAR" displayname="Linear Flow Control Grid" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Linear Flow Control Grid&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;The values of this grid are checked against the linear flow threshold to decide on the flow-routing algorithm.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FLUX" displayname="Flux" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Flux&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Flux out of each cell, i.e. everything accumulated so far.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STATE_OUT" displayname="State t + 1" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;State t + 1&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Grid describing the state of each cell at timestep t + 1.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OPERATION" displayname="Operation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Operation&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] accuflux&lt;/p&gt;&lt;p&gt;[1] accucapacityflux / state&lt;/p&gt;&lt;p&gt;[2] accufractionflux / state&lt;/p&gt;&lt;p&gt;[3] accuthresholdflux / state&lt;/p&gt;&lt;p&gt;[4] accutriggerflux / state&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Select a mode of operation.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINEAR" displayname="Switch to Linear Flow" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Switch to Linear Flow&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Switch from MFD8 to D8 if the linear flow threshold is crossed.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRES_LINEAR" displayname="Threshold Linear Flow" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold Linear Flow&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Threshold for linear flow, if exceeded D8 is used.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool allows one to use different "accumulation functions" to, e.g., move material over a "local drain direction" (LDD) network. The LDD net is computed for the supplied surface by MFD and D8 flow-routing algorithms. It is possible to switch from MFD to D8 as soon as a flow threshold is exceeded.
+The input to each cell on the grid can be supplied from e.g. time series and the material can be moved over the net in several ways. All of these, except the "accuflux" operation, compute both the flux and the state for a given cell. For time series modelling (batch processing), the state of each cell at time t can be initialized with the previous state t - 1.
+The capacity, fraction, threshold and trigger operations compute the fluxes and cell states at time t + 1 according to cell-specific parameters that control the way the flux is computed.
+The capacity function limits the cell-to-cell flux by a (channel) capacity control; the fraction function transports only a given proportion of material from cell to cell, the threshold function transports material only once a given threshold has been exceeded, and the trigger function transports nothing until a trigger value has been exceeded (at which point all accumulated material in the state of the cell is discharged to its downstream neighbour(s)).
+
+The following operations are supported:
+
+	* ACCUFLUX: The accuflux function computes the new state of the attributes for the cell as the sum of the input cell values plus the cumulative sum of all upstream elements draining through the cell.
+
+	* ACCUCAPACITYFLUX / STATE: The operation modifies the accumulation of flow over the network by a limiting transport capacity given in absolute values.
+
+	* ACCUFRACTIONFLUX / STATE: The operation limits the flow over the network by a parameter which controls the proportion (0-1) of the material that can flow through each cell.
+
+	* ACCUTHRESHOLDFLUX / STATE: The operation modifies the accummulation of flow over the network by limiting transport to values greater than a minimum threshold value per cell. No flow occurs if the threshold is not exceeded.
+
+	* ACCUTRIGGERFLUX / STATE: The operation only allows transport (flux) to occur if a trigger value is exceeded, otherwise no transport occurs and storage accumulates.
+
+Instead of choosing a single global operation with the "Operation" choice parameter, an input grid can be provided which encodes the operation per grid cell. This makes it possible to use different operations across the LDD (e.g. for different land use classes). The cell values used to encode the operation in the grid are the index numbers of the "Operation" choice parameter:
+
+0: accuflux
+1: accucapacityflux / state
+2: accufractionflux / state
+3: accuthresholdflux / state
+4: accutriggerflux / state
+
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V. Wichmann (c) 2009-2022</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

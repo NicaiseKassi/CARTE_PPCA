@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_9" displayname="Separate points by direction">
+    <parameters>
+      <param name="OUTPUT" displayname="Ouput" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Ouput&lt;/p&gt;&lt;p&gt;Shapes list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="POINTS" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIRECTIONS" displayname="Number of Directions" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Directions&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 2&lt;/p&gt;&lt;p&gt;Default: 4&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TOLERANCE" displayname="Tolerance (Degree)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tolerance (Degree)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 5.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Separates points by direction. Direction is determined as average direction of three consecutive points A, B, C. If the angle between the directions of A-B and B-C is higher than given tolerance angle the point is dropped. This tool has been designed to separate GPS tracks recorded by tractors while preparing a field. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O. Conrad (c) 2008</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

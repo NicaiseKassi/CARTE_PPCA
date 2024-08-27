@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_9" displayname="Automated Cloud Cover Assessment">
+    <parameters>
+      <param name="BAND2" displayname="Green" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Green&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Landsat band 2 reflectance&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BAND3" displayname="Red" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Red&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Landsat band 3 reflectance&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BAND4" displayname="NIR" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;NIR&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Landsat band 4 reflectance&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BAND5" displayname="SWIR" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;SWIR&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Landsat band 5 reflectance&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BAND6" displayname="Thermal" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Thermal&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Landsat band 6 temperature [Kelvin]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLOUD" displayname="Cloud Cover" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Cloud Cover&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FILTER" displayname="Apply post-processing filter to remove small holes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Apply post-processing filter to remove small holes&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B56C" displayname="B56 Composite (step 6)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;B56 Composite (step 6)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 225.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="B45R" displayname="B45 Ratio: Desert detection (step 10)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;B45 Ratio: Desert detection (step 10)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CSIG" displayname="Always use cloud signature (step 14)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Always use cloud signature (step 14)&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PASS2" displayname="Bypass second-pass processing, and merge warm (not ambiguous) and cold clouds" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bypass second-pass processing, and merge warm (not ambiguous) and cold clouds&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHADOW" displayname="Include a category for cloud shadows" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Include a category for cloud shadows&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Automated Cloud-Cover Assessment (ACCA) for Landsat TM/ETM+ imagery as proposed by Irish (2000). This tool incorporates E.J. Tizado's GRASS GIS implementation (i.landsat.acca).</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>B.Bechtel, O.Conrad (c) 2013</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

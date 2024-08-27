@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_11" displayname="Fuzzify">
+    <parameters>
+      <param name="INPUT" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Fuzzified Grid" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Fuzzified Grid&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INC_MIN" displayname="From" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;From&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INC_MAX" displayname="To" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;To&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.300000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEC_MIN" displayname="From" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;From&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.700000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEC_MAX" displayname="To" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;To&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Increase&lt;/p&gt;&lt;p&gt;[1] Decrease&lt;/p&gt;&lt;p&gt;[2] Increase and Decrease&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRANSITION" displayname="Transition" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Transition&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] linear&lt;/p&gt;&lt;p&gt;[1] sigmoidal&lt;/p&gt;&lt;p&gt;[2] j-shaped&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="INVERT" displayname="Invert" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Invert&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AUTOFIT" displayname="Adjust" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Adjust&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Automatically adjust control points to grid's data range&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Translates grid values into fuzzy set membership as preparation for fuzzy set analysis. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V.Olaya (c) 2004</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

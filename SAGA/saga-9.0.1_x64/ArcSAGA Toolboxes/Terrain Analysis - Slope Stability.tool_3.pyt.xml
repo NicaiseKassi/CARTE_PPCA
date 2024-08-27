@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="WETNESS">
+    <parameters>
+      <param name="DEM" displayname="DEM" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;DEM&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;A DEM&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Cmin" displayname="Min hydraulic conductivity grid (m/hr) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Min hydraulic conductivity grid (m/hr) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing minimum material hydraulic conductivity (in m/hr)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Cmax" displayname="Max hydraulic conductivity grid (m/hr) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Max hydraulic conductivity grid (m/hr) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing maximum material hydraulic conductivity (in m/hr)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Dmin" displayname="Min groundwater recharge grid (m/hr) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Min groundwater recharge grid (m/hr) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing minimum groundwater recharge (in m/hr)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Dmax" displayname="Max groundwater recharge grid (m/hr) " type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Max groundwater recharge grid (m/hr) &lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing maximum groundwater recharge (in m/hr)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Emin" displayname="Min material depth grid (m)" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Min material depth grid (m)&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing minimum depth to potential shear plane (in m)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Emax" displayname="Max material depth grid (m)" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Max material depth grid (m)&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid representing maximum depth to potential shear plane (in m)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fCmin" displayname="Min global material conductivity (m/hr)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Min global material conductivity (m/hr)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 2.700000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fCmax" displayname="Max global material conductivity (m/hr)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Max global material conductivity (m/hr)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 2.700000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fDmin" displayname="Min global groundwater recharge (m/hr)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Min global groundwater recharge (m/hr)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.001000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fDmax" displayname="Max global groundwater recharge (m/hr)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Max global groundwater recharge (m/hr)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.001000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fEmin" displayname="Min global material depth (m)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Min global material depth (m)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fEmax" displayname="Max global material depth (m)" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Max global material depth (m)&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Constant value if no raster set&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="fH" displayname="Parameter sampling runs" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Parameter sampling runs&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Number of sampling cycles&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="F" displayname="WI values" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;WI values&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;Resulting wetness index (-) grid&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="G" displayname="WI classes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;WI classes&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Classified wetness (-) grid&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Catchment Area Calculation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Catchment Area Calculation&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Deterministic 8&lt;/p&gt;&lt;p&gt;[1] Rho 8&lt;/p&gt;&lt;p&gt;[2] Braunschweiger Reliefmodell&lt;/p&gt;&lt;p&gt;[3] Deterministic Infinity&lt;/p&gt;&lt;p&gt;[4] Multiple Flow Direction&lt;/p&gt;&lt;p&gt;[5] Multiple Triangular Flow Directon&lt;/p&gt;&lt;p&gt;Default: 4&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PREPROC" displayname="Preprocessing" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Preprocessing&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>
+This tool calculates a topographic wetness index (TWI) following Montgomery & Dietrich (1994) that can be used to estimate the degree of saturation of unconsolidated, permeable materials above (more or less) impermeable bedrock. In contrast to the common TOPMODEL (Beven & Kirkby, 1979) - based TWI, this index differs in such that it considers hydraulic conductivity to be constant in a soil mantle overlying relatively impermeable bedrock. Also, it uses the sine of the slope rather than its tangens, which is more correct and significantly matters for steeper slopes that give raise to landslides. For computation, a slope (in radians) and a catchment area (in m2) grid are required. Additionally, information on groundwater recharge (m/hr), material hydraulic conductivity (m/hr), and depth to potential shear plane (m) are required that can be specified either globally or through grids. The tool produces a continuous wetness index (-) where cells with WI values &gt; 1 (overland flow) set to 1, and optionally creates a classified WI grid rendering three saturation classes:.
+0): Low moisture (WI smaller 0.1)
+1): Partially wet (0.1 smaller WI smaller 1)
+2): Saturation zone (WI larger 1)
+
+References:
+&lt;a href="http://www.tandfonline.com/doi/abs/10.1080/02626667909491834"&gt;Beven, K.J., Kirkby, M.J. (1979) A physically-based variable contributing area model of basin hydrology. Hydrology Science Bulletin, 24, 43-69.&lt;/a&gt;.
+
+&lt;a href="http://www.agu.org/pubs/crossref/1994/93WR02979.shtml"&gt;Montgomery D. R., Dietrich, W. E. (1994) A physically based model for the topographic control on shallow landsliding. Water Resources Research, 30, 1153-1171.&lt;/a&gt;.
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>A. G&uuml;nther (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

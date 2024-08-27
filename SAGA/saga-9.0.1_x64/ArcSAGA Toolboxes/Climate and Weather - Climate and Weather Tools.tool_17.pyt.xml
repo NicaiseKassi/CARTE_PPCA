@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_17" displayname="Snow Cover">
+    <parameters>
+      <param name="T" displayname="Mean Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Mean Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="P" displayname="Precipitation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Precipitation&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DAYS" displayname="Snow Cover Days" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Snow Cover Days&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MEAN" displayname="Average" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Average&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXIMUM" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUANTILE" displayname="Quantile" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Quantile&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUANT_VAL" displayname="Value" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Value&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 100.000000&lt;/p&gt;&lt;p&gt;Default: 50.000000&lt;/p&gt;&lt;p&gt;Quantile specified as percentage.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TIME" displayname="Time" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Time&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Year&lt;/p&gt;&lt;p&gt;[1] January - March&lt;/p&gt;&lt;p&gt;[2] April - June&lt;/p&gt;&lt;p&gt;[3] July - September&lt;/p&gt;&lt;p&gt;[4] October - December&lt;/p&gt;&lt;p&gt;[5] Single Month&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MONTH" displayname="Month" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Month&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] January&lt;/p&gt;&lt;p&gt;[1] February&lt;/p&gt;&lt;p&gt;[2] March&lt;/p&gt;&lt;p&gt;[3] April&lt;/p&gt;&lt;p&gt;[4] May&lt;/p&gt;&lt;p&gt;[5] June&lt;/p&gt;&lt;p&gt;[6] July&lt;/p&gt;&lt;p&gt;[7] August&lt;/p&gt;&lt;p&gt;[8] September&lt;/p&gt;&lt;p&gt;[9] October&lt;/p&gt;&lt;p&gt;[10] November&lt;/p&gt;&lt;p&gt;[11] December&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The 'Snow Cover' tool uses a simple model to estimate snow cover statistics from climate data. When temperature falls below zero any precipitation is accumulated as snow. Temperatures above zero will diminish accumulated snow successively until it is gone completely. Simulation is done on a daily basis. If you supply the tool with monthly averages, temperatures will be interpolated using a spline and precipitation will be split into separate events. The latter is done with respect to the monthly mean temperature, i.e. the higher the temperature the more concentrated are precipitation events and vice versa. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2017</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

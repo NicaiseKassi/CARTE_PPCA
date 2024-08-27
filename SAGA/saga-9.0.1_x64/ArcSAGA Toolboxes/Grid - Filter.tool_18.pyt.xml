@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_18" displayname="Simple Filter (Restricted to Polygons)">
+    <parameters>
+      <param name="INPUT" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESULT" displayname="Filtered Grid" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Filtered Grid&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHAPES" displayname="pPolygons" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;pPolygons&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;&lt;p&gt;pPolygons: the simple filter will only operate on grid cells which fall in the same shape&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Filter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Filter&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Smooth&lt;/p&gt;&lt;p&gt;[1] Sharpen&lt;/p&gt;&lt;p&gt;[2] Edge&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Choose the shape of the filter kernel.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_TYPE" displayname="Kernel Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Square&lt;/p&gt;&lt;p&gt;[1] Circle&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;The kernel's shape.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_RADIUS" displayname="Radius" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Radius&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;&lt;p&gt;cells&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Simple standard filters for grids, evaluation within polygons.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Johan Van de Wauw, 2015</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

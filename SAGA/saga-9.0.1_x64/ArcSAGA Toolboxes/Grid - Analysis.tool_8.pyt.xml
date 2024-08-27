@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_8" displayname="Ordered Weighted Averaging">
+    <parameters>
+      <param name="GRIDS" displayname="Input Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Output Grid" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Output Grid&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ORDERED" displayname="Ordered" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Ordered&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="WEIGHTS" displayname="Weights" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weights&lt;/p&gt;&lt;p&gt;Static table&lt;/p&gt;&lt;p&gt;1 Fields:&lt;/p&gt;&lt;p&gt;- 1. [8 byte floating point number] Weight&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The ordered weighted averaging (OWA) tool calculates for each cell the weighted average from the values of the supplied grids. The weighting factor for each grid value is defined with the 'Weights' table. If the 'Ordered' flag is unchecked, the order of the weights correspond to the order of the grids in the input list. If the 'Ordered' flag is checked, the grid values will be sorted and the weights will be assigned to the values in their ascending order, i.e. from the lowest to the highest value. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Victor Olaya (c) 2006</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

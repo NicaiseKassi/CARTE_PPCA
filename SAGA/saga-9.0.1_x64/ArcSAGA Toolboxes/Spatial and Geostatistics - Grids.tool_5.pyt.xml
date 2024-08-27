@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_5" displayname="Zonal Grid Statistics">
+    <parameters>
+      <param name="ZONES" displayname="Zone Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Zone Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;The grid defining the zones to analyze [NoData;categorical values].&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CATLIST" displayname="Categorical Grids" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Categorical Grids&lt;/p&gt;&lt;p&gt;Grid list, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Additional grids used to delineate the UCUs [NoData;categorical values].&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STATLIST" displayname="Grids to Analyse" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Grids to Analyse&lt;/p&gt;&lt;p&gt;Grid list, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;The grids with continuous data for which the statistics are calculated [NoData;continuous values].&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ASPECT" displayname="Aspect" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Aspect&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A grid encoding the aspect of each cell [radians].&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UCU" displayname="UCUs" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;UCUs&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;The derived unique condition areas (UCU).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTTAB" displayname="Zonal Statistics" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Zonal Statistics&lt;/p&gt;&lt;p&gt;Table, output&lt;/p&gt;&lt;p&gt;The summary table with the statistics for each UCU.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHORTNAMES" displayname="Short Field Names" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Short Field Names&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;Shorten the field names to ten characters (as this is the limit for field names in shapefiles).&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool allows one to calculate zonal statistics over a set of input grids and reports the statistics in a table.
+The tool first creates a contingency table of unique condition units (UCUs) on which the statistics are calculated. These UCUs are delineated from a zonal grid (e.g. sub catchments) and optional categorical grids (e.g. landcover, soil, ...). The derived UCUs can be output as a grid dataset.
+The tool then calculates descriptive statistics (n, min, max, mean, standard deviation and sum) for each UCU from (optional) grids with continious data (e.g. slope). A grid storing aspect must be treated specially (circular statistics), please use the "Aspect" input parameter for such a grid.
+
+The tool has four different modes of operation:
+(1) only a zonal grid is used as input. This results in a simple contingency table with the number of grid cells in each zone.
+(2) a zonal grid and additional categorical grids are used as input. This results in a contingency table with the number of cells in each UCU.
+(3) a zonal grid and additional grids with continuous data are used as input. This results in a contingency table with the number of cells in each zone and the corresponding statistics for each continuous grid.
+(4) a zonal grid, additional categorical grids and additional grids with continuous data are used as input. This results in a contingency table with the number of cells in each UCU and the corresponding statistics for each continuous grid.
+
+Depending on the mode of operation, the output table contains information about the categorical combination of each UCU, the number of cells in each UCU and the statistics for each UCU. A typical output table may look like this:
+&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;ID UCU&lt;/td&gt;&lt;td&gt;ID Zone&lt;/td&gt;&lt;td&gt;ID 1stCat&lt;/td&gt;&lt;td&gt;ID 2ndCat&lt;/td&gt;&lt;td&gt;Count UCU&lt;/td&gt;&lt;td&gt;N 1stCont&lt;/td&gt;&lt;td&gt;MIN 1stCont&lt;/td&gt;&lt;td&gt;MAX 1stCont&lt;/td&gt;&lt;td&gt;MEAN 1stCont&lt;/td&gt;&lt;td&gt;STDDEV 1stCont&lt;/td&gt;&lt;td&gt;SUM 1stCont&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1      &lt;/td&gt;&lt;td&gt;0      &lt;/td&gt;&lt;td&gt;2        &lt;/td&gt;&lt;td&gt;6        &lt;/td&gt;&lt;td&gt;6        &lt;/td&gt;&lt;td&gt;6        &lt;/td&gt;&lt;td&gt;708.5      &lt;/td&gt;&lt;td&gt;862.0      &lt;/td&gt;&lt;td&gt;734.5       &lt;/td&gt;&lt;td&gt;62.5          &lt;/td&gt;&lt;td&gt;4406.8     &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;2      &lt;/td&gt;&lt;td&gt;0      &lt;/td&gt;&lt;td&gt;3        &lt;/td&gt;&lt;td&gt;4        &lt;/td&gt;&lt;td&gt;106      &lt;/td&gt;&lt;td&gt;106      &lt;/td&gt;&lt;td&gt;829.1      &lt;/td&gt;&lt;td&gt;910.1      &lt;/td&gt;&lt;td&gt;848.8       &lt;/td&gt;&lt;td&gt;28.5          &lt;/td&gt;&lt;td&gt;89969.0    &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+Note: in the case you like to convert some one of the statistics back to a grid dataset, you can use the following procedure. Run the tool and output the UCU grid. Then edit the output table to match your needs (delete all fields besides the UCU identifier and the fields you like to create grids from). Then use both datasets in the "Grids from Classified Grid and Table" tool.
+
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Volker Wichmann (c) 2005-2022</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

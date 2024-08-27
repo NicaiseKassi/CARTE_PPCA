@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_10" displayname="Bioclimatic Variables">
+    <parameters>
+      <param name="TMEAN" displayname="Mean Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Mean Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TMIN" displayname="Minimum Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Minimum Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TMAX" displayname="Maximum Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Maximum Temperature&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="P" displayname="Precipitation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Precipitation&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_01" displayname="Annual Mean Temperature" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Annual Mean Temperature&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_02" displayname="Mean Diurnal Range" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Diurnal Range&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_03" displayname="Isothermality" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Isothermality&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_04" displayname="Temperature Seasonality" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Temperature Seasonality&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_05" displayname="Maximum Temperature of Warmest Month" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Temperature of Warmest Month&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_06" displayname="Minimum Temperature of Coldest Month" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Temperature of Coldest Month&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_07" displayname="Temperature Annual Range" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Temperature Annual Range&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_08" displayname="Mean Temperature of Wettest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Temperature of Wettest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_09" displayname="Mean Temperature of Driest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Temperature of Driest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_10" displayname="Mean Temperature of Warmest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Temperature of Warmest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_11" displayname="Mean Temperature of Coldest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Mean Temperature of Coldest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_12" displayname="Annual Precipitation" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Annual Precipitation&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_13" displayname="Precipitation of Wettest Month" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation of Wettest Month&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_14" displayname="Precipitation of Driest Month" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation of Driest Month&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_15" displayname="Precipitation Seasonality" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation Seasonality&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_16" displayname="Precipitation of Wettest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation of Wettest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_17" displayname="Precipitation of Driest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation of Driest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_18" displayname="Precipitation of Warmest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation of Warmest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BIO_19" displayname="Precipitation of Coldest Quarter" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Precipitation of Coldest Quarter&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUARTER_COLDEST" displayname="Coldest Quarter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Coldest Quarter&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Result is the number of the 2nd of three consecutive months (Dec-Jan-Feb=1, Jan-Feb-Mar=2, ...).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUARTER_WARMEST" displayname="Warmest Quarter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Warmest Quarter&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Result is the number of the 2nd of three consecutive months (Dec-Jan-Feb=1, Jan-Feb-Mar=2, ...).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUARTER_DRIEST" displayname="Driest Quarter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Driest Quarter&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Result is the number of the 2nd of three consecutive months (Dec-Jan-Feb=1, Jan-Feb-Mar=2, ...).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUARTER_WETTEST" displayname="Wettest Quarter" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Wettest Quarter&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Result is the number of the 2nd of three consecutive months (Dec-Jan-Feb=1, Jan-Feb-Mar=2, ...).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SEASONALITY" displayname="Temperature Seasonality" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Temperature Seasonality&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Coefficient of Variation&lt;/p&gt;&lt;p&gt;[1] Standard Deviation&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool calculates biologically meaningful variables from monthly climate data (mean, minimum and maximum temperature and precipitation sum), as provided by climate related projects, e.g.:&lt;ul&gt;&lt;li&gt;&lt;a href="https://chelsa-climate.org/bioclim/"&gt; CHELSA - Climatologies at High resolution for the Earth___s Land Surface Area&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://worldclim.org/data/bioclim.html"&gt; WorldClim - Global climate and weather data&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;It follows a short definition of the provided bioclimatic variables:&lt;ol&gt;&lt;li&gt;&lt;b&gt;Annual Mean Temperature:&lt;/b&gt; The mean of all the monthly mean temperatures. Each monthly mean temperature is the mean of that month's maximum and minimum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Diurnal Range:&lt;/b&gt; The annual mean of all the monthly diurnal temperature ranges. Each monthly diurnal range is the difference between that month's maximum and minimum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Isothermality:&lt;/b&gt; The mean diurnal range (parameter 2) divided by the annual temperature range (parameter 7).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Temperature Seasonality:&lt;/b&gt; returns either&lt;ul&gt;&lt;li&gt; the temperature coefficient of variation as the standard deviation of the monthly mean temperatures expressed as a percentage of the mean of those temperatures (i.e. the annual mean). For this calculation, the mean in degrees Kelvin is used. This avoids the possibility of having to divide by zero, but does mean that the values are usually quite small.&lt;/li&gt;&lt;li&gt; the standard deviation of the monthly mean temperatures.&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;&lt;b&gt;Maximum Temperature of Warmest Period:&lt;/b&gt; The highest temperature of any monthly maximum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Minimum Temperature of Coldest Period:&lt;/b&gt; The lowest temperature of any monthly minimum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Temperature Annual Range:&lt;/b&gt; The difference between the Maximum Temperature of Warmest Period and the Minimum Temperature of Coldest Period.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Wettest Quarter:&lt;/b&gt; The wettest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Driest Quarter:&lt;/b&gt; The driest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Warmest Quarter:&lt;/b&gt; The warmest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Coldest Quarter:&lt;/b&gt; The coldest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Annual Precipitation:&lt;/b&gt; The sum of all the monthly precipitation estimates.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Wettest Period:&lt;/b&gt; The precipitation of the wettest month.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Driest Period:&lt;/b&gt; The precipitation of the driest month.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation Seasonality:&lt;/b&gt; The Coefficient of Variation is the standard deviation of the monthly precipitation estimates expressed as a percentage of the mean of those estimates (i.e. the annual mean).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Wettest Quarter:&lt;/b&gt; The wettest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Driest Quarter:&lt;/b&gt; The driest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Warmest Quarter:&lt;/b&gt; The warmest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Coldest Quarter:&lt;/b&gt; The coldest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;/ol&gt;&lt;/p&gt;&lt;p&gt;The quarterly parameters are not aligned to any calendar quarters. BioClim's definition of a quarter is any consecutive 3 months. For example, the driest quarter will be the 3 consecutive months that are drier than any other set of 3 consecutive months.&lt;/p&gt;</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2016</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

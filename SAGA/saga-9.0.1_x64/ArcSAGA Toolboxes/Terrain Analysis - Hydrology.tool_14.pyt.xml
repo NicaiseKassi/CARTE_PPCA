@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_14" displayname="SAGA Wetness Index">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="WEIGHT" displayname="Weights" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Weights&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AREA" displayname="Catchment Area" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Catchment Area&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SLOPE" displayname="Catchment Slope" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Catchment Slope&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AREA_MOD" displayname="Modified Catchment Area" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Modified Catchment Area&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TWI" displayname="Topographic Wetness Index" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Topographic Wetness Index&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SUCTION" displayname="Suction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Suction&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;&lt;p&gt;the lower this value is the stronger is the suction effect&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AREA_TYPE" displayname="Type of Area" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Type of Area&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] total catchment area&lt;/p&gt;&lt;p&gt;[1] square root of catchment area&lt;/p&gt;&lt;p&gt;[2] specific catchment area&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SLOPE_TYPE" displayname="Type of Slope" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Type of Slope&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] local slope&lt;/p&gt;&lt;p&gt;[1] catchment slope&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SLOPE_MIN" displayname="Minimum Slope" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Slope&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SLOPE_OFF" displayname="Offset Slope" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Offset Slope&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.100000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SLOPE_WEIGHT" displayname="Slope Weighting" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Slope Weighting&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;weighting factor for slope in index calculation&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The 'SAGA Wetness Index' is, as the name says, similar to the 'Topographic Wetness Index' (TWI), but it is based on a modified catchment area calculation ('Modified Catchment Area'), which does not think of the flow as very thin film. As result it predicts for cells situated in valley floors with a small vertical distance to a channel a more realistic, higher potential soil moisture compared to the standard TWI calculation.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>J.Boehner, O.Conrad (c) 2001</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

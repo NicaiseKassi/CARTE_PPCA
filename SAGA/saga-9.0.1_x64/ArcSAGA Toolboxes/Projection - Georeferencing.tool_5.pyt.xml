@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_5" displayname="Define Georeference for Grids">
+    <parameters>
+      <param name="GRIDS" displayname="Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="REFERENCED" displayname="Referenced Grids" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Referenced Grids&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEFINITION" displayname="Definition" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Definition&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] cellsize and lower left cell coordinates&lt;/p&gt;&lt;p&gt;[1] cellsize and upper left cell coordinates&lt;/p&gt;&lt;p&gt;[2] lower left cell coordinates and left to right range&lt;/p&gt;&lt;p&gt;[3] lower left cell coordinates and lower to upper range&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="XMIN" displayname="Left" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Left&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="XMAX" displayname="Right" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Right&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="YMIN" displayname="Lower" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Lower&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="YMAX" displayname="Upper" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Upper&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CELL_REF" displayname="Cell Reference" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cell Reference&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] center&lt;/p&gt;&lt;p&gt;[1] corner&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool simply allows definition of grid's cellsize and position. It does not perform any kind of warping but might be helpful, if the grid has lost this information or is already aligned with the coordinate system. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2013</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

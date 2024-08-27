@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_28" displayname="Land Surface Temperature">
+    <parameters>
+      <param name="IRRADIANCE" displayname="Global Irradiance" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Global Irradiance&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[W/m_]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="IRRADIANCE_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 5.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ALBEDO" displayname="Albedo" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Albedo&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Surface reflectance [0 &lt;= albedo &lt;= 1]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ALBEDO_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 0.500000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EMISSIVITY" displayname="Emissivity" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Emissivity&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Thermal emissivity [0 &lt;= emissivity &lt;= 1]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EMISSIVITY_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 0.500000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONVECTION" displayname="Convection Coefficient" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Convection Coefficient&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Convection heat transfer coefficient [W/m_/K].&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONVECTION_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 10.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_AIR" displayname="Ambient Air Temperature" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Ambient Air Temperature&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[Kelvin]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_AIR_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 300.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_SKY" displayname="Radiant Sky Temperature" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Radiant Sky Temperature&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;[Kelvin]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_SKY_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 280.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_INITIAL" displayname="Initial Temperature Estimation" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Initial Temperature Estimation&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Initial estimation of land surface temperature [Kelvin] (e.g., 300).&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="T_INITIAL_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 300.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LST" displayname="Land Surface Temperature" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Land Surface Temperature&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;[Kelvin]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UNIT" displayname="Unit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Unit&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Kelvin&lt;/p&gt;&lt;p&gt;[1] Celsius&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ITERATIONS" displayname="Iterations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Iterations&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 10&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool estimates the land surface temperature by combining global solar radiation, albedo, and the Stefan-Boltzmann Law. This is an implementation of the approach proposed by Hofierka et al. (2020). </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2020</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_7" displayname="Slope Length">
+    <parameters>
+      <param name="DEM" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;The digital elevation model.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LENGTH" displayname="Slope Length" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Slope Length&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;The maximum slope (flowpath) length.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool allows one to calculate a special version of slope (or flowpath) length. In a first processing step, the slope of each cell is calculated with the method of Zevenbergen & Thorne (1986). The slope length values are then accumulated downslope using the Deterministic 8 (D8) single flow direction algorithm and a threshold criterion: the slope length is only accumulated downslope if the slope of the receiving cell is steeper than half of the slope of the contributing cell (i.e. the accumulation stops if the slope profile gets abruptly flatter).
+If several cells are contributing to a cell, the maximum of the accumulated slope length values found in these cells is passed to the receiving cell and then routed further downslope.
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V.Olaya (c) 2004</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

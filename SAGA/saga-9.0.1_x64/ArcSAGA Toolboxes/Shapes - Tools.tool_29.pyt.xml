@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_29" displayname="Gradient Lines from Points">
+    <parameters>
+      <param name="POINTS" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIRECTION" displayname="Direction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Direction&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;The direction measured in degrees with the North direction as origin and increasing clockwise.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LENGTH" displayname="Length" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Length&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="X_COMP" displayname="X-Component" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;X-Component&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Y_COMP" displayname="Y-Component" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Y-Component&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEFINITION" displayname="Gradient Definition" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Gradient Definition&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] direction and length&lt;/p&gt;&lt;p&gt;[1] directional components&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SCALING" displayname="Length Scaling Factor" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Length Scaling Factor&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GRADIENTS" displayname="Gradient" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Gradient&lt;/p&gt;&lt;p&gt;Shapes, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGETS" displayname="Target Points" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Target Points&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Create lines representing gradients from point data attributes. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2020</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

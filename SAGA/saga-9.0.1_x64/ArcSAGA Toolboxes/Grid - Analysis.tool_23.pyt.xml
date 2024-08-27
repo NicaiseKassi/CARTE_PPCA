@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_23" displayname="Coverage of Categories">
+    <parameters>
+      <param name="CLASSES" displayname="Categories" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Categories&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COVERAGES" displayname="Coverages" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Coverages&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LUT" displayname="Classification" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Classification&lt;/p&gt;&lt;p&gt;Table, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LUT_VAL" displayname="Value" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Value&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;The class value or - in combination with value 2 - the minimum/maximum value specifying a value range.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LUT_MAX" displayname="Maximum Value" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Value&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Use this option to specify a value range equal or greater than previous value and less than this (maximum) value.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LUT_NAME" displayname="Class name" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Class name&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Optional, a class name used for the naming of the target coverage rasters.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NO_DATA" displayname="Mark No Coverage as No-Data" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Mark No Coverage as No-Data&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DATADEPTH" displayname="Data Depth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Data Depth&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] 1-byte&lt;/p&gt;&lt;p&gt;[1] 2-byte&lt;/p&gt;&lt;p&gt;[2] 4-byte&lt;/p&gt;&lt;p&gt;[3] 8-byte&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UNIT" displayname="Unit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Unit&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] fraction&lt;/p&gt;&lt;p&gt;[1] percent&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The Coverage of Categories tool calculates for each category of the categories input grid the percentage it covers in each cell of the target grid system. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

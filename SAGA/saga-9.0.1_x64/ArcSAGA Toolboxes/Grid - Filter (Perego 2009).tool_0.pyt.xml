@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_0" displayname="Average With Thereshold 1">
+    <parameters>
+      <param name="INPUT" displayname="Input" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;This must be your input data of type grid.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESULT" displayname="AWT Grid" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;AWT Grid&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;New grid filtered with the A1WiTh tool&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RX" displayname="Radius X" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Radius X&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RY" displayname="Radius Y" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Radius Y&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESH" displayname="Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Threshold&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;&lt;p&gt;The values in the specified radius is used in the average calculation only if its difference with the central value is lesser or equal to this threshold.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Average With Thereshold for Grids calculates average in X and Y distances unsing only the values that differ form central pixel less than a specified threshold. It's useful to remove noise whit a known maximum reducing the loss of informations</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Alessandro Perego</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

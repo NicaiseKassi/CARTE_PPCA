@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_11" displayname="Logistic Regression (OpenCV)">
+    <parameters>
+      <param name="FEATURES" displayname="Features" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Features&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NORMALIZE" displayname="Normalize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Normalize&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLASSES" displayname="Classification" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Classification&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CLASSES_LUT" displayname="Look-up Table" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Look-up Table&lt;/p&gt;&lt;p&gt;Table, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;A reference list of the grid values that have been assigned to the training classes.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MODEL_LOAD" displayname="Load Model" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Load Model&lt;/p&gt;&lt;p&gt;File path&lt;/p&gt;&lt;p&gt;Use a model previously stored to file.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRAIN_AREAS" displayname="Training Areas" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Training Areas&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRAIN_CLASS" displayname="Class Identifier" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Class Identifier&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TRAIN_BUFFER" displayname="Buffer Size" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Buffer Size&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;For non-polygon type training areas, creates a buffer with a diameter of specified size.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MODEL_SAVE" displayname="Save Model" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Save Model&lt;/p&gt;&lt;p&gt;File path&lt;/p&gt;&lt;p&gt;Stores model to file to be used for subsequent classifications instead of training areas.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOGR_LEARNING_RATE" displayname="Learning Rate" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Learning Rate&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;The learning rate determines how fast we approach the solution.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOGR_ITERATIONS" displayname="Number of Iterations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Iterations&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 300&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOGR_REGULARIZATION" displayname="Regularization" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Regularization&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] disabled&lt;/p&gt;&lt;p&gt;[1] L1 norm&lt;/p&gt;&lt;p&gt;[2] L2 norm&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOGR_TRAIN_METHOD" displayname="Training Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Training Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Batch Gradient Descent&lt;/p&gt;&lt;p&gt;[1] Mini-Batch Gradient Descent&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOGR_MINIBATCH_SIZE" displayname="Mini-Batch Size" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Mini-Batch Size&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 1&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Integration of the OpenCV Machine Learning library for Logistic Regression based classification of gridded features. 
+
+Optimization algorithms like &lt;i&gt;Batch Gradient Descent&lt;/i&gt; and &lt;i&gt;Mini-Batch Gradient Descent&lt;/i&gt; are supported in Logistic Regression. It is important that we mention the number of iterations these optimization algorithms have to run. The number of iterations can be thought as number of steps taken and learning rate specifies if it is a long step or a short step. This and previous parameter define how fast we arrive at a possible solution. 
+
+In order to compensate for overfitting regularization can be performed. (L1 or L2 norm). 
+
+Logistic regression implementation provides a choice of two training methods with &lt;i&gt;Batch Gradient Descent&lt;/i&gt; or the &lt;i&gt;Mini-Batch Gradient Descent&lt;/i&gt;. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

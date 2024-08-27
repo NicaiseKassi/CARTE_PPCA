@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="Point to Point Distances">
+    <parameters>
+      <param name="POINTS" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ID_POINTS" displayname="Identifier" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Identifier&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NEAR" displayname="Near Points" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Near Points&lt;/p&gt;&lt;p&gt;Shapes, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ID_NEAR" displayname="Identifier" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Identifier&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DISTANCES" displayname="Distances" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Distances&lt;/p&gt;&lt;p&gt;Table, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LINES" displayname="Distances as Lines" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Distances as Lines&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FORMAT" displayname="Output Format" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Output Format&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] complete input times near points matrix&lt;/p&gt;&lt;p&gt;[1] each pair with a single record&lt;/p&gt;&lt;p&gt;[2] find only the nearest point for each input point&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAX_DIST" displayname="Maximum Distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Distance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;ignored if set to zero (consider all pairs)&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Computes distances between pairs of points.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V.Olaya (c) 2004, O.Conrad (c) 2014</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

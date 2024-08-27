@@ -1,0 +1,6 @@
+Unique Value Statistics for Grids|20
+statistics_grid
+QgsProcessingParameterMultipleLayers|GRIDS|Values|3|None|False
+QgsProcessingParameterRasterDestination|MAJORITY|Majority|None|True
+QgsProcessingParameterRasterDestination|MINORITY|Minority|None|True
+QgsProcessingParameterRasterDestination|NUNIQUES|Number of Unique Values|None|True

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_2" displayname="Directional Grid Statistics">
+    <parameters>
+      <param name="GRID" displayname="Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MEAN" displayname="Arithmetic Mean" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Arithmetic Mean&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BEGIN" displayname="Start Direction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Start Direction&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;[degree]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="END" displayname="Stop Direction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Stop Direction&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 359.000000&lt;/p&gt;&lt;p&gt;[degree]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STEP" displayname="Directional Step" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Directional Step&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 45.000000&lt;/p&gt;&lt;p&gt;[degree]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TOLERANCE" displayname="Tolerance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tolerance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;[degree]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXDISTANCE" displayname="Maximum Distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Distance&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Maximum distance [cells], ignored if set to zero.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_WEIGHTING" displayname="Weighting" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weighting&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] no distance weighting&lt;/p&gt;&lt;p&gt;[1] inverse distance to a power&lt;/p&gt;&lt;p&gt;[2] exponential&lt;/p&gt;&lt;p&gt;[3] gaussian weighting&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_IDW_POWER" displayname="Inverse Distance Weighting Power" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Inverse Distance Weighting Power&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_IDW_OFFSET" displayname="Inverse Distance Offset" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Inverse Distance Offset&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_BANDWIDTH" displayname="Gaussian and Exponential Weighting Bandwidth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Gaussian and Exponential Weighting Bandwidth&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 25.000000&lt;/p&gt;&lt;p&gt;[cells]&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Directional Grid Statistics</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2018</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_13" displayname="Save Grid Statistics to Table">
+    <parameters>
+      <param name="GRIDS" displayname="Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STATS" displayname="Statistics for Grids" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Statistics for Grids&lt;/p&gt;&lt;p&gt;Table, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DATA_CELLS" displayname="Number of Data Cells" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Data Cells&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NODATA_CELLS" displayname="Number of No-Data Cells" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Number of No-Data Cells&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CELLSIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MEAN" displayname="Arithmetic Mean" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Arithmetic Mean&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MIN" displayname="Minimum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAX" displayname="Maximum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RANGE" displayname="Range" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Range&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SUM" displayname="Sum" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sum&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SUM2" displayname="Sum of Squares" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sum of Squares&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="VAR" displayname="Variance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Variance&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STDDEV" displayname="Standard Deviation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Standard Deviation&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STDDEVLO" displayname="Mean less Standard Deviation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Mean less Standard Deviation&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="STDDEVHI" displayname="Mean plus Standard Deviation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Mean plus Standard Deviation&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PCTL_VAL" displayname="Percentiles" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Percentiles&lt;/p&gt;&lt;p&gt;Text&lt;/p&gt;&lt;p&gt;Default: 5; 25; 50; 75; 95&lt;/p&gt;&lt;p&gt;Separate the desired percentiles by semicolon&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PCTL_HST" displayname="From Histogram" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;From Histogram&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SAMPLES" displayname="Sample Size" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Sample Size&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 100.000000&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Minimum sample size [percent] used to calculate statistics. Ignored, if set to zero.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Calculates statistical properties (arithmetic mean, minimum, maximum, variance, standard deviation) for each of the given grids and saves it to a table.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2013</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

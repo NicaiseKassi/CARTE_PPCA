@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_18" displayname="Diversity of Categories">
+    <parameters>
+      <param name="CATEGORIES" displayname="Categories" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Categories&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="COUNT" displayname="Number of Categories" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Number of Categories&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;number of different categories (unique values) within search area&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIVERSITY" displayname="Diversity" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Diversity&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;distance weighted average of the number of different categories for distance classes&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONNECTIVITY" displayname="Connectivity" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Connectivity&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONNECTEDAVG" displayname="Averaged Connectivity" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Averaged Connectivity&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;average size of the area covered by each category that occurs within search area&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NB_CASE" displayname="Connectivity Neighbourhood" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Connectivity Neighbourhood&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Rook's case&lt;/p&gt;&lt;p&gt;[1] Queen's case&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NORMALIZE" displayname="Normalize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Normalize&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] no&lt;/p&gt;&lt;p&gt;[1] by number of cells&lt;/p&gt;&lt;p&gt;[2] by area size&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_TYPE" displayname="Kernel Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kernel Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Square&lt;/p&gt;&lt;p&gt;[1] Circle&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;&lt;p&gt;The kernel's shape.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KERNEL_RADIUS" displayname="Radius" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Radius&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;&lt;p&gt;cells&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_WEIGHTING" displayname="Weighting Function" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Weighting Function&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] no distance weighting&lt;/p&gt;&lt;p&gt;[1] inverse distance to a power&lt;/p&gt;&lt;p&gt;[2] exponential&lt;/p&gt;&lt;p&gt;[3] gaussian&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_IDW_POWER" displayname="Power" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Power&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 2.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DW_BANDWIDTH" displayname="Bandwidth" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Bandwidth&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Bandwidth for exponential and Gaussian weighting&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Grid based analysis of diversity. It is assumed that the input grid provides a classification (i.e. not a contiuous field). For each cell it counts the number of different categories (classes) as well as the connectivity within the chosen search window. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2015</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

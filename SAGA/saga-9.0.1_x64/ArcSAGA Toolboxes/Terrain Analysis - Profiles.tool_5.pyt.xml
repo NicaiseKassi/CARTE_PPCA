@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_5" displayname="Profile from Points">
+    <parameters>
+      <param name="GRID" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;The input grid to query.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="VALUES" displayname="Values" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Values&lt;/p&gt;&lt;p&gt;Grid list, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Additional values to be collected along profile.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TABLE" displayname="Coordinates Table" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Coordinates Table&lt;/p&gt;&lt;p&gt;Table, input&lt;/p&gt;&lt;p&gt;Table with the point coordinates to query.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="X" displayname="X Coordinate" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;X Coordinate&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Y" displayname="Y Coordinate" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Y Coordinate&lt;/p&gt;&lt;p&gt;Table field&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESULT" displayname="Profile" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Profile&lt;/p&gt;&lt;p&gt;Table, output&lt;/p&gt;&lt;p&gt;The output table with the queried profile values.&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>The tool allows one to query a profile from an input grid (usually a DEM) for point coordinates stored in a table or shapefile. The profile is traced from one point to the next, sampling the grid values along each line segment. Optionally, additional grids can be queried whose values are added to the profile table. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V.Olaya, V. Wichmann (c) 2004-2022</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

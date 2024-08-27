@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_3" displayname="Vertical Distance to Channel Network">
+    <parameters>
+      <param name="ELEVATION" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;A grid that contains elevation data.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CHANNELS" displayname="Channel Network" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Channel Network&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;A grid providing information about the channel network. It is assumed that no-data cells are not part of the channel network. Vice versa all others cells are recognised as channel network members.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DISTANCE" displayname="Vertical Distance to Channel Network" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Vertical Distance to Channel Network&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;&lt;p&gt;The resulting grid gives the altitude above the channel network in the same units as the elevation data.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="BASELEVEL" displayname="Channel Network Base Level" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Channel Network Base Level&lt;/p&gt;&lt;p&gt;Grid, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;This optional grid output contains the interpolated channel network base level elevations.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="THRESHOLD" displayname="Tension Threshold" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tension Threshold&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Maximum change in elevation units (e.g. meter), iteration is stopped once maximum change reaches this threshold.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MAXITER" displayname="Maximum Iterations" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Maximum Iterations&lt;/p&gt;&lt;p&gt;Integer&lt;/p&gt;&lt;p&gt;Minimum: 0&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Maximum number of iterations, ignored if set to zero&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NOUNDERGROUND" displayname="Keep Base Level below Surface" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Keep Base Level below Surface&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 1&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool calculates the vertical distance to a channel network base level. The algorithm consists of two major steps:
+ 1. Interpolation of a channel network base level elevation
+ 2. Subtraction of this base level from the original elevations
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2002</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

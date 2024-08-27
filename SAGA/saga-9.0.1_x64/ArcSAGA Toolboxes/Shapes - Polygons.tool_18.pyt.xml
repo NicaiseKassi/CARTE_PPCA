@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_18" displayname="Add Point Attributes to Polygons">
+    <parameters>
+      <param name="INPUT" displayname="Polygons" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Polygons&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;&lt;p&gt;Input polygon shapefile&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="POINTS" displayname="Points" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Points&lt;/p&gt;&lt;p&gt;Shapes, input&lt;/p&gt;&lt;p&gt;Input point shapefile&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FIELDS" displayname="Attributes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Attributes&lt;/p&gt;&lt;p&gt;Table fields&lt;/p&gt;&lt;p&gt;Attributes to add. Select none to add all&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Result" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Result&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;&lt;p&gt;Optional output polygon shapefile&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ADD_LOCATION_INFO" displayname="Add Location Info" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Add Location Info&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Add location information from points (x,y,(z,m))&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Spatial join for polygons. Retrieves for each polygon the selected attributes from that point, which is contained in the polygon. In case a polygon contains more than one point, the last point wins.
+Optionally, the tool allows one to attach the geometrical properties (x,y(z,m)) of each point as additional attributes.
+
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>V. Wichmann (c) 2014</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_4" displayname="Direct Georeferencing of Airborne Photographs">
+    <parameters>
+      <param name="INPUT" displayname="Unreferenced Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Unreferenced Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OUTPUT" displayname="Referenced Grids" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Referenced Grids&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EXTENT" displayname="Extent" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Extent&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEM" displayname="Elevation" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DEM_DEFAULT" displayname="Default" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Default&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;default value if no grid has been selected&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CFL" displayname="Focal Length [mm]" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Focal Length [mm]&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 80.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PXSIZE" displayname="CCD Physical Pixel Size [micron]" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;CCD Physical Pixel Size [micron]&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 5.200000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="X" displayname="X" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;X&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Y" displayname="Y" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Y&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="Z" displayname="Z" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Z&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 1000.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="OMEGA" displayname="Omega" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Omega&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;X axis rotation angle [degree] (roll)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="PHI" displayname="Phi" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Phi&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Y axis rotation angle [degree] (pitch)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KAPPA" displayname="Kappa" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Kappa&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;Z axis rotation angle [degree] (heading)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="KAPPA_OFF" displayname="Offset" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Offset&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 90.000000&lt;/p&gt;&lt;p&gt;origin adjustment angle [degree] for kappa (Z axis, heading)&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ORIENTATION" displayname="Orientation" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Orientation&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] BLUH&lt;/p&gt;&lt;p&gt;[1] PATB&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ROW_ORDER" displayname="Row Order" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Row Order&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] top down&lt;/p&gt;&lt;p&gt;[1] bottom up&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="RESAMPLING" displayname="Resampling" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Resampling&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Nearest Neighbour&lt;/p&gt;&lt;p&gt;[1] Bilinear Interpolation&lt;/p&gt;&lt;p&gt;[2] Bicubic Spline Interpolation&lt;/p&gt;&lt;p&gt;[3] B-Spline Interpolation&lt;/p&gt;&lt;p&gt;Default: 3&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DATA_TYPE" displayname="Data Storage Type" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Data Storage Type&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] 1 byte unsigned integer&lt;/p&gt;&lt;p&gt;[1] 1 byte signed integer&lt;/p&gt;&lt;p&gt;[2] 2 byte unsigned integer&lt;/p&gt;&lt;p&gt;[3] 2 byte signed integer&lt;/p&gt;&lt;p&gt;[4] 4 byte unsigned integer&lt;/p&gt;&lt;p&gt;[5] 4 byte signed integer&lt;/p&gt;&lt;p&gt;[6] 4 byte floating point&lt;/p&gt;&lt;p&gt;[7] 8 byte floating point&lt;/p&gt;&lt;p&gt;[8] same as original&lt;/p&gt;&lt;p&gt;Default: 8&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Direct georeferencing of aerial photographs uses extrinsic (position, altitude) and intrinsic (focal length, physical pixel size) camera parameters. Orthorectification routine supports additional data from a Digital Elevation Model (DEM).
+</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2012</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

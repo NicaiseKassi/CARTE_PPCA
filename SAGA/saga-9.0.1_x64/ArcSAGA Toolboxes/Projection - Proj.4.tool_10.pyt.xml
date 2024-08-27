@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_10" displayname="Rotated to Regular Grid">
+    <parameters>
+      <param name="SOURCE" displayname="Grids" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET" displayname="Grids" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Grids&lt;/p&gt;&lt;p&gt;Grid list, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="EXTENT" displayname="Extent" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Extent&lt;/p&gt;&lt;p&gt;Shapes, output, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ROT_POLE_LON" displayname="Longitude" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Longitude&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: -162.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ROT_POLE_LAT" displayname="Latitude" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Latitude&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 39.250000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_USER_SIZE" displayname="Cellsize" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Cellsize&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool projects grids using rotated-pole coordinates to regular geographic grids.
+Rotated-pole coordinates are used by the CORDEX project. &lt;hr&gt;&lt;h4&gt;CORDEX Domains&lt;/h4&gt;&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;CORDEX Area&lt;/td&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;Resolution&lt;/td&gt;&lt;td&gt;N-Pole/Lon.&lt;/td&gt;&lt;td&gt;N-Pole/Lat.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;South America   &lt;/td&gt;&lt;td&gt;SAM-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;  -56.06&lt;/td&gt;&lt;td&gt; 70.60&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Central America &lt;/td&gt;&lt;td&gt;CAM-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;  113.98&lt;/td&gt;&lt;td&gt; 75.74&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;North America   &lt;/td&gt;&lt;td&gt;NAM-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;   83.00&lt;/td&gt;&lt;td&gt; 42.50&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Europe          &lt;/td&gt;&lt;td&gt;EUR-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt; -162.00&lt;/td&gt;&lt;td&gt; 39.25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Africa          &lt;/td&gt;&lt;td&gt;AFR-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;     N/A&lt;/td&gt;&lt;td&gt; 90.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;South Asia      &lt;/td&gt;&lt;td&gt;WAS-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt; -123.34&lt;/td&gt;&lt;td&gt; 79.95&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;East Asia       &lt;/td&gt;&lt;td&gt;EAS-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;  -64.78&lt;/td&gt;&lt;td&gt; 77.61&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Central Asia    &lt;/td&gt;&lt;td&gt;CAS-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt; -103.39&lt;/td&gt;&lt;td&gt; 43.48&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Australasia     &lt;/td&gt;&lt;td&gt;AUS-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;  141.38&lt;/td&gt;&lt;td&gt; 60.31&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Antarctica      &lt;/td&gt;&lt;td&gt;ANT-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt; -166.92&lt;/td&gt;&lt;td&gt;  6.08&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Arctic          &lt;/td&gt;&lt;td&gt;ARC-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;    0.00&lt;/td&gt;&lt;td&gt;  6.55&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Mediterranean   &lt;/td&gt;&lt;td&gt;MED-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;  198.00&lt;/td&gt;&lt;td&gt; 39.25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;M-East, N-Africa&lt;/td&gt;&lt;td&gt;MNA-44&lt;/td&gt;&lt;td&gt;0.44&lt;/td&gt;&lt;td&gt;     N/A&lt;/td&gt;&lt;td&gt; 90.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;M-East, N-Africa&lt;/td&gt;&lt;td&gt;MNA-22&lt;/td&gt;&lt;td&gt;0.22&lt;/td&gt;&lt;td&gt;     N/A&lt;/td&gt;&lt;td&gt; 90.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Europe          &lt;/td&gt;&lt;td&gt;EUR-11&lt;/td&gt;&lt;td&gt;0.11&lt;/td&gt;&lt;td&gt; -162.00&lt;/td&gt;&lt;td&gt; 39.25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;South East Asia &lt;/td&gt;&lt;td&gt;SEA-22&lt;/td&gt;&lt;td&gt;0.22&lt;/td&gt;&lt;td&gt;     N/A&lt;/td&gt;&lt;td&gt; 90.00&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2021</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_4" displayname="Upslope Area">
+    <parameters>
+      <param name="TARGET" displayname="Target Area" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Target Area&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_PT_X" displayname="Target X coordinate" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Target X coordinate&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;The x-coordinate of the target point in world coordinates [map units]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TARGET_PT_Y" displayname="Target Y coordinate" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Target Y coordinate&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 0.000000&lt;/p&gt;&lt;p&gt;The y-coordinate of the target point in world coordinates [map units]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ELEVATION" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SINKROUTE" displayname="Sink Routes" type="Optional" direction="Input">
+        <dialogReference>&lt;p&gt;Sink Routes&lt;/p&gt;&lt;p&gt;Grid, input, optional&lt;/p&gt;&lt;p&gt;optional&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="AREA" displayname="Upslope Area" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Upslope Area&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] Deterministic 8&lt;/p&gt;&lt;p&gt;[1] Deterministic Infinity&lt;/p&gt;&lt;p&gt;[2] Multiple Flow Direction&lt;/p&gt;&lt;p&gt;[3] Multiple Triangular Flow Directon&lt;/p&gt;&lt;p&gt;[4] Multiple Maximum Downslope Gradient Based Flow Directon&lt;/p&gt;&lt;p&gt;Default: 2&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="CONVERGE" displayname="Convergence" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Convergence&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.001000&lt;/p&gt;&lt;p&gt;Default: 1.100000&lt;/p&gt;&lt;p&gt;Convergence factor for Multiple Flow Direction algorithm&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="MFD_CONTOUR" displayname="Contour Length" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Contour Length&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;&lt;p&gt;Include (pseudo) contour length as additional weighting factor in multiple flow direction routing, reduces flow to diagonal neighbour cells by a factor of 0.71 (s. Quinn et al. 1991 for details).&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool allows you to specify target cells, for which the upslope contributing area shall be identified. The result will give for each cell the percentage of its flow that reaches the target cell(s).
+_______
+
+This version uses all valid cells (not 'no data' values) of a given target grid to determine the contributing area. In case no target grid is provided as input, the specified x/y coordinates are used as target point.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2001</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

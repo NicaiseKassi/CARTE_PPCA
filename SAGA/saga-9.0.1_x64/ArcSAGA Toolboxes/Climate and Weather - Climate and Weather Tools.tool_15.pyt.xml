@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_15" displayname="Thermic Belt Classification">
+    <parameters>
+      <param name="GSL" displayname="Growing Season Length" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Growing Season Length&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Growing season length given as number of days of a year.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="GST" displayname="Mean Temperature" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Mean Temperature&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Mean temperature of the growing season.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FROST" displayname="Frost occurence" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Frost occurence&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;&lt;p&gt;Frost occurence as binary factor.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NIVAL_TEMP" displayname="Minimum Temperature Nival" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Temperature Nival&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 3.500000&lt;/p&gt;&lt;p&gt;Minimum Temperature for nival belt.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TREE_TEMP" displayname="Minimum Temperature Treeline" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Minimum Temperature Treeline&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 6.400000&lt;/p&gt;&lt;p&gt;Minimum Temperature for treeline.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="ATB" displayname="Thermal Belts" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Thermal Belts&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>Calculates the thermal belts based on mean temperature and length of the growing season.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Dirk Nikolaus Karger</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

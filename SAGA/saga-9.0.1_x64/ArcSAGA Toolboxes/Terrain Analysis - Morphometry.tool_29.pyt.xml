@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_29" displayname="Wind Shelter Index">
+    <parameters>
+      <param name="ELEVATION" displayname="Elevation" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Elevation&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="SHELTER" displayname="Wind Shelter Index" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Wind Shelter Index&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="UNIT" displayname="Unit" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Unit&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] degree&lt;/p&gt;&lt;p&gt;[1] radians&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DIRECTION" displayname="Wind Direction" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Wind Direction&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 135.000000&lt;/p&gt;&lt;p&gt;The direction [degree] into which the wind blows.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="TOLERANCE" displayname="Tolerance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Tolerance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 90.000000&lt;/p&gt;&lt;p&gt;Default: 5.000000&lt;/p&gt;&lt;p&gt;The tolerance angle [degree] to the left and right of the direction angle.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="DISTANCE" displayname="Distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Distance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 5.000000&lt;/p&gt;&lt;p&gt;[cells]&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="QUANTILE" displayname="Quantile" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Quantile&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Minimum: 0.000000&lt;/p&gt;&lt;p&gt;Maximum: 1.000000&lt;/p&gt;&lt;p&gt;Default: 1.000000&lt;/p&gt;&lt;p&gt;Set quantile to one to get the maximum slope angle.&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="NEGATIVES" displayname="Include Negative Slopes" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Include Negative Slopes&lt;/p&gt;&lt;p&gt;Boolean&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="METHOD" displayname="Method" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Method&lt;/p&gt;&lt;p&gt;Choice&lt;/p&gt;&lt;p&gt;Available Choices:&lt;/p&gt;&lt;p&gt;[0] windward&lt;/p&gt;&lt;p&gt;[1] leeward&lt;/p&gt;&lt;p&gt;Default: 0&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool reimplements the Wind Shelter Index proposed by Plattner et al. (2004), that has originally been implemented within the RSAGA package. </summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>O.Conrad (c) 2019</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>

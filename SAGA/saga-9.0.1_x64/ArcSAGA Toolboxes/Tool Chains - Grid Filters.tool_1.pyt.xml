@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20150910</CreaDate>
+    <CreaTime>11550000</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+    <ArcGISProfile>ItemDescription</ArcGISProfile>
+  </Esri>
+  <tool name="tool_1" displayname="Notch Filter for Grids">
+    <parameters>
+      <param name="INPUT_GRID" displayname="Input Grid" type="Required" direction="Input">
+        <dialogReference>&lt;p&gt;Input Grid&lt;/p&gt;&lt;p&gt;Grid, input&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOWPASS_UPPER" displayname="Lowpass Upper" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Lowpass Upper&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="HIPASS_LOWER" displayname="Highpass Lower" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Highpass Lower&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="FILTERED_GRID" displayname="Notch" type="Required" direction="Output">
+        <dialogReference>&lt;p&gt;Notch&lt;/p&gt;&lt;p&gt;Grid, output&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="HIGH_PASS" displayname="Upper search distance " type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Upper search distance &lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 75.000000&lt;/p&gt;</dialogReference>
+      </param>
+      <param name="LOW_PASS" displayname="Lower search distance" type="Optional" direction="Output">
+        <dialogReference>&lt;p&gt;Lower search distance&lt;/p&gt;&lt;p&gt;Floating point&lt;/p&gt;&lt;p&gt;Default: 25.000000&lt;/p&gt;</dialogReference>
+      </param>
+    </parameters>
+    <summary>This tool chain uses the Grid &gt; Filter &gt; Resampling Filter tool to simulate a wide notch filter applied between the two resampling cell sizes chosen.</summary>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Angus Jack</resTitle>
+    </idCitation>
+    <idCredit>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and Boehner, J. (2015): System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, doi:10.5194/gmd-8-1991-2015. [SAGA - System for Automated Geoscientific Analyses - saga-gis.org] </idCredit>
+    <searchKeys>
+      <SAGA></SAGA>
+    </searchKeys>
+  </dataIdInfo>
+</metadata>
