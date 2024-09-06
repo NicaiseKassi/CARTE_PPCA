@@ -1,5 +1,5 @@
 
-setwd("D:/CARTE_MENS_PPCA/Carte")
+setwd("/home/kassi/Documents/CARTE_PPCA")
 
 # Charger les libraries  --------------------------------------------------
 
@@ -23,11 +23,11 @@ library(leaflet)
 library(openair)
 
 
-tble <- read_excel('RESULTAT_2024.xls',sheet = 1)
+tble <- read_excel('RESULTAT_2024.xlsx',sheet = 1)
 print(tble)
 
 
-cols <- c('T2M_MAX', 'T2M_MIN', 'PRECIP', 'RH2M', 'WS2M', 'WD2M')
+cols <- c('T2M_MAX', 'T2M_MIN', 'PRECIP', 'RH2M', 'Inso')
 tble <- tble[,c(1,2,3, grep(paste0(cols, collapse = '|'), colnames(tble)))]
 
 
@@ -88,7 +88,7 @@ raster::crs(grd) <- '+proj=utm +zone=30 +datum=WGS84 +units=m +no_defs'
 pnts <- as(pnts, 'Spatial')
 
 colnames(pnts@data) <- c('stt', 'T2M_MAX', 'T2M_MIN','PRECIP',
-                         'RH2M','WS2M','WD2M')
+                         'RH2M','Inso')
 head(pnts)
 
 #-------------------------------
@@ -108,7 +108,7 @@ if (!dir.exists("raster")) {
 }
 
 # Écrire le raster avec le nom de fichier généré
-terra::writeRaster(idw.t2max, 'raster/idw.t2max.tif')
+terra::writeRaster(idw.t2max, 'raster/idw.t2max.tif',overwrite = TRUE)
 
 
 srtm <- geodata::elevation_30s(country = 'CIV', path = 'tmpr')
@@ -118,7 +118,7 @@ terra::writeRaster(srtm, 'raster/srtm.tif', overwrite = T)
 
 
 # Définir l'environnement RSAGA
-env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
+env <- rsaga.env(path = "/usr/bin")
 
 # Chemins des fichiers
 fle.srt <- 'raster/srtm.tif'
@@ -139,7 +139,7 @@ rst <- terra::rast(fle.out)
 plot(rst, col = rainbow(25))
 
 
-VALEURS <- c(25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35)
+#VALEURS <- c(25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35)
 
 # Créer une palette de couleurs personnalisée
 custom_palette <- colorRampPalette(c("blue", "yellow", "red"))(11)
@@ -147,10 +147,10 @@ custom_palette <- colorRampPalette(c("blue", "yellow", "red"))(11)
 tmap_mode("plot")
 
 Temp_Maxi <- tm_shape(rst) + 
-  tm_raster(col = "gwr_t2max.tif", style = 'fixed',
+  tm_raster(col = "gwr_t2max.tif", style = 'pretty',
             n = 11, title = "Température maxi\n[en °C]",
             palette = custom_palette,
-            breaks = VALEURS,
+            #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
   tm_shape(STATIONS_CRS)+
@@ -167,13 +167,13 @@ Temp_Maxi <- tm_shape(rst) +
              show.labels = 2,
              text.size = 0.35) +
   tm_scale_bar(position = c(0.4,0)) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/LOGO_CCA-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
           height = 1.7,
           halign = "bottom",
           margin = 0.2,
           position = c(0,0.9),
           just = NA) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/Image2-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
           height = 1.4,
           halign = "bottom",
           margin = 0.1,
@@ -209,7 +209,7 @@ print(Temp_Maxi)
 current_date <- format(Sys.Date(), "%d-%m-%Y")
 
 # Définir le chemin et le nom du fichier
-file_path <- paste0("D:/CARTE_MENS_PPCA/Carte/Image/Temp_Maxi_", current_date, ".png")
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/Temp_Maxi_", current_date, ".png")
 
 # Sauvegarder la carte en tant que fichier PNG
 tmap_save(Temp_Maxi, filename = file_path)
@@ -228,7 +228,7 @@ idw.t2min <- terra::project(idw.t2min, '+proj=longlat +datum=WGS84 +no_defs')
 
 
 # Écrire le raster avec le nom de fichier généré
-terra::writeRaster(idw.t2min, 'raster/idw.t2min.tif')
+terra::writeRaster(idw.t2min, 'raster/idw.t2min.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
 env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
@@ -341,7 +341,7 @@ idw.precip <- terra::project(idw.precip, '+proj=longlat +datum=WGS84 +no_defs')
 
 
 # Écrire le raster avec le nom de fichier généré
-terra::writeRaster(idw.precip, 'raster/idw.precip.tif')
+terra::writeRaster(idw.precip, 'raster/idw.precip.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
 env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
@@ -561,7 +561,7 @@ idw.Ws2m <- terra::project(idw.Ws2m, '+proj=longlat +datum=WGS84 +no_defs')
 
 
 # Écrire le raster avec le nom de fichier généré
-terra::writeRaster(idw.Ws2m, 'raster/idw.Ws2m.tif')
+terra::writeRaster(idw.Ws2m, 'raster/idw.Ws2m.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
 env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
