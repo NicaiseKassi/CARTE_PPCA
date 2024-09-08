@@ -1,7 +1,0 @@
-Export Shapes|4
-io_gdal
-QgsProcessingParameterFeatureSource|SHAPES|Shapes|-1|None|False
-QgsProcessingParameterFile|FILE|File|QgsProcessingParameterFile.File|None|False
-QgsProcessingParameterEnum|FORMAT|Format|[0] ERDAS JPEG2000 (SDK 5.5);[1] Flexible Image Transport System;[2] Bathymetry Attributed Grid;[3] Network Common Data Format;[4] Geospatial PDF;[5] ESRI FileGDB;[6] PCIDSK Database File;[7] NASA Planetary Data System 4;[8] MIPL VICAR file;[9] MBTiles;[10] ESRI Shapefile;[11] MapInfo File;[12] IHO S-57 (ENC);[13] Microstation DGN;[14] Memory;[15] Comma Separated Value (.csv);[16] Geography Markup Language (GML);[17] GPX;[18] Keyhole Markup Language (LIBKML);[19] Keyhole Markup Language (KML);[20] GeoJSON;[21] GeoJSON Sequence;[22] Interlis 1;[23] Interlis 2;[24] GMT ASCII Vectors (.gmt);[25] GeoPackage;[26] SQLite / Spatialite;[27] WAsP .map format;[28] PostgreSQL/PostGIS;[29] MySQL;[30] ESRI FileGDB;[31] AutoCAD DXF;[32] FlatGeobuf;[33] Geoconcept;[34] GeoRSS;[35] PostgreSQL SQL dump;[36] GPSBabel;[37] Open Document/ LibreOffice / OpenOffice Spreadsheet ;[38] MS Office Open XML spreadsheet;[39] Elastic Search;[40] Carto;[41] AmigoCloud;[42] Selafin;[43] OpenJUMP JML;[44] VDV-451/VDV-452/INTREST Data Format;[45] Mapbox Vector Tiles;[46] NextGIS Web;[47] MapML|False|0
-QgsProcessingParameterString|OPTIONS|Creation Options|
-QgsProcessingParameterString|LAYER_OPTIONS|Layer Creation Options|

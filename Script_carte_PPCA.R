@@ -16,7 +16,8 @@ library(fs)
 library(readxl)
 library(RColorBrewer)
 library(pals) 
-library(viridis) 
+library(viridis)
+library(dichromat)
 library(tmap) 
 library (tmaptools)
 library(leaflet)
@@ -64,7 +65,7 @@ pnts <- st_transform(pnts1, st_crs(32630))
 pnts <- terra::vect(pnts)
 
 
-Stations <- read_excel("Station_PPCA.xls")
+Stations <- read_excel("Station_PPCA.xlsx")
 crs_contour <- CRS(SRS_string="OGC:CRS84")
 Stations$LONG <- as.numeric(Stations$LONG)
 Stations$LAT <- as.numeric(Stations$LAT)
@@ -141,15 +142,16 @@ plot(rst, col = rainbow(25))
 
 #VALEURS <- c(25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35)
 
-# Créer une palette de couleurs personnalisée
-custom_palette <- colorRampPalette(c("blue", "yellow", "red"))(11)
+# Créer la palette
+#palette_tmax <- coolwarm(9)
+
 
 tmap_mode("plot")
 
 Temp_Maxi <- tm_shape(rst) + 
   tm_raster(col = "gwr_t2max.tif", style = 'pretty',
-            n = 11, title = "Température maxi\n[en °C]",
-            palette = custom_palette,
+            n = 9, title = "Température maxi\n[en °C]",
+            palette = "OrRd",
             #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
@@ -231,7 +233,7 @@ idw.t2min <- terra::project(idw.t2min, '+proj=longlat +datum=WGS84 +no_defs')
 terra::writeRaster(idw.t2min, 'raster/idw.t2min.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
-env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
+env <- rsaga.env(path = "/usr/bin")
 
 # Chemins des fichiers
 fle.srt <- 'raster/srtm.tif'
@@ -252,18 +254,24 @@ rst <- terra::rast(fle.out)
 plot(rst, col = rainbow(25))
 
 
-VALEURS <- c(20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24.5, 25, 25.5)
+#VALEURS <- c(20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24.5, 25, 25.5)
 
-# Créer une palette de couleurs personnalisée
-custom_palette <- colorRampPalette(c("lightblue", "lightgreen"))(11)
+# Créer une palette de couleurs
+
+#palette_original <- colorRampPalette(c("#0080FF", "#4CC4FF", "#99EEFF", "#CCFFFF", "#FFFFCC", 
+                                      #"#FFEE99", "#FFC44C" ,"#FF8000"))
+
+palette_tmin <- colorRampPalette(c("#0080FF", "#4CC4FF", "#99EEFF", "#CCFFFF", "#FFEE99", "#FFC44C"))
+
+palette_custom <- palette_tmin(100)
 
 tmap_mode("plot")
 
 Temp_Min <- tm_shape(rst) + 
-  tm_raster(col = "gwr_t2min.tif", style = 'fixed',
-            n = 11, title = "Température mini\n[en °C]",
-            palette = "Spectral",
-            breaks = VALEURS,
+  tm_raster(col = "gwr_t2min.tif", style = 'pretty',
+            n = 9, title = "Température mini\n[en °C]",
+            palette =palette_custom,
+            #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
   tm_shape(STATIONS_CRS)+
@@ -280,13 +288,13 @@ Temp_Min <- tm_shape(rst) +
              show.labels = 2,
              text.size = 0.35) +
   tm_scale_bar(position = c(0.4,0)) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/LOGO_CCA-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
           height = 1.7,
           halign = "bottom",
           margin = 0.2,
           position = c(0,0.9),
           just = NA) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/Image2-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
           height = 1.4,
           halign = "bottom",
           margin = 0.1,
@@ -322,7 +330,7 @@ print(Temp_Min)
 current_date <- format(Sys.Date(), "%d-%m-%Y")
 
 # Définir le chemin et le nom du fichier
-file_path <- paste0("D:/CARTE_MENS_PPCA/Carte/Image/Temp_Mini_", current_date, ".png")
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/Temp_Mini_", current_date, ".png")
 
 # Sauvegarder la carte en tant que fichier PNG
 tmap_save(Temp_Min, filename = file_path)
@@ -344,7 +352,7 @@ idw.precip <- terra::project(idw.precip, '+proj=longlat +datum=WGS84 +no_defs')
 terra::writeRaster(idw.precip, 'raster/idw.precip.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
-env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
+env <- rsaga.env(path = "/usr/bin")
 
 # Chemins des fichiers
 fle.srt <- 'raster/srtm.tif'
@@ -365,16 +373,16 @@ rst <- terra::rast(fle.out)
 plot(rst, col = rainbow(25))
 
 
-VALEURS <- c(0, 10, 20, 30, 40, 50, 60, 75, 100, 150, 200, 250, 300)
+#VALEURS <- c(0, 10, 20, 30, 40, 50, 60, 75, 100, 150, 200, 250, 300)
 
 
 tmap_mode("plot")
 
 PRECIP <- tm_shape(rst) + 
-  tm_raster(col = "gwr_precip.tif", style = 'fixed',
-            n = 11, title = "Pluviométrie\n[en mm]",
-            palette = "Spectral",
-            breaks = VALEURS,
+  tm_raster(col = "gwr_precip.tif", style = 'pretty',
+            n = 9, title = "Pluviométrie\n[en mm]",
+            palette = "GnBu",
+            #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
   tm_shape(STATIONS_CRS)+
@@ -391,13 +399,13 @@ PRECIP <- tm_shape(rst) +
              show.labels = 2,
              text.size = 0.35) +
   tm_scale_bar(position = c(0.4,0)) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/LOGO_CCA-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
           height = 1.7,
           halign = "bottom",
           margin = 0.2,
           position = c(0,0.9),
           just = NA) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/Image2-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
           height = 1.4,
           halign = "bottom",
           margin = 0.1,
@@ -433,7 +441,7 @@ print(PRECIP)
 current_date <- format(Sys.Date(), "%d-%m-%Y")
 
 # Définir le chemin et le nom du fichier
-file_path <- paste0("D:/CARTE_MENS_PPCA/Carte/Image/PRECIP_", current_date, ".png")
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/PRECIP_", current_date, ".png")
 
 # Sauvegarder la carte en tant que fichier PNG
 tmap_save(PRECIP, filename = file_path)
@@ -454,7 +462,7 @@ idw.Rh2m <- terra::project(idw.Rh2m, '+proj=longlat +datum=WGS84 +no_defs')
 terra::writeRaster(idw.Rh2m, 'raster/idw.Rh2m.tif')
 
 # Définir l'environnement RSAGA
-env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
+env <- rsaga.env(path = "/usr/bin")
 
 # Chemins des fichiers
 fle.srt <- 'raster/srtm.tif'
@@ -475,15 +483,15 @@ rst <- terra::rast(fle.out)
 plot(rst, col = rainbow(25))
 
 
-VALEURS <- c(82, 84, 86, 88, 90)
+#VALEURS <- c(82, 84, 86, 88, 90)
 
 
 tmap_mode("plot")
 
  Rh2m<- tm_shape(rst) + 
   tm_raster(col = "gwr_Rh2m.tif", style = 'pretty',
-            n = 10, title = "Humidité relative\n[en %]",
-            palette = "Spectral",
+            n = 9, title = "Humidité relative\n[en %]",
+            palette = "PuBuGn",
             #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
@@ -501,13 +509,13 @@ tmap_mode("plot")
              show.labels = 2,
              text.size = 0.35) +
   tm_scale_bar(position = c(0.4,0)) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/LOGO_CCA-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
           height = 1.7,
           halign = "bottom",
           margin = 0.2,
           position = c(0,0.9),
           just = NA) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/Image2-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
           height = 1.4,
           halign = "bottom",
           margin = 0.1,
@@ -543,7 +551,7 @@ print( Rh2m)
 current_date <- format(Sys.Date(), "%d-%m-%Y")
 
 # Définir le chemin et le nom du fichier
-file_path <- paste0("D:/CARTE_MENS_PPCA/Carte/Image/Rh2m_", current_date, ".png")
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/Rh2m_", current_date, ".png")
 
 # Sauvegarder la carte en tant que fichier PNG
 tmap_save(Rh2m, filename = file_path)
@@ -553,23 +561,23 @@ tmap_save(Rh2m, filename = file_path)
 #INSOLATION
 #-------------------------------
 
-idw.Ws2m <- gstat::idw(WS2M ~ 1, pnts, grd)
-idw.Ws2m <- raster::raster(idw.Ws2m)
-idw.Ws2m <- rast(idw.Ws2m)
-idw.Ws2m <- terra::crop(idw.Ws2m, PPCA_shp) %>% terra::mask(., PPCA_shp)
-idw.Ws2m <- terra::project(idw.Ws2m, '+proj=longlat +datum=WGS84 +no_defs')
+idw.Inso <- gstat::idw(Inso ~ 1, pnts, grd)
+idw.Inso <- raster::raster(idw.Inso)
+idw.Inso <- rast(idw.Inso)
+idw.Inso <- terra::crop(idw.Inso, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.Inso <- terra::project(idw.Inso, '+proj=longlat +datum=WGS84 +no_defs')
 
 
 # Écrire le raster avec le nom de fichier généré
-terra::writeRaster(idw.Ws2m, 'raster/idw.Ws2m.tif',overwrite = TRUE)
+terra::writeRaster(idw.Inso, 'raster/idw.Inso.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
-env <- rsaga.env(path = 'D:/CARTE_MENS_PPCA/Carte/SAGA/saga-9.0.1_x64')
+env <- rsaga.env(path = "/usr/bin")
 
 # Chemins des fichiers
 fle.srt <- 'raster/srtm.tif'
-fle.inp <- 'raster/idw.Ws2m.tif'
-fle.out <- 'raster/gwr_Ws2m.tif'
+fle.inp <- 'raster/idw.Inso.tif'
+fle.out <- 'raster/gwr_Inso.tif'
 
 rsl <- rsaga.geoprocessor(
   lib = 'statistics_regression', 
@@ -589,7 +597,7 @@ plot(rst, col = rainbow(25))
 tmap_mode("plot")
 
 Insolation <- tm_shape(rst) + 
-  tm_raster(col = "gwr_Ws2m.tif", style = 'pretty',
+  tm_raster(col = "gwr_Inso.tif", style = 'pretty',
             n = 10, title = "Nombre d'heure \ninsolation [en heure]",
             palette = "YlOrBr",
             midpoint = FALSE, 
@@ -608,13 +616,13 @@ Insolation <- tm_shape(rst) +
              show.labels = 2,
              text.size = 0.35) +
   tm_scale_bar(position = c(0.4,0)) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/LOGO_CCA-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
           height = 1.7,
           halign = "bottom",
           margin = 0.2,
           position = c(0,0.9),
           just = NA) +
-  tm_logo("D:/CARTE_MENS_PPCA/Carte/Image2-removebg.png",
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
           height = 1.4,
           halign = "bottom",
           margin = 0.1,
@@ -650,21 +658,20 @@ print(Insolation)
 current_date <- format(Sys.Date(), "%d-%m-%Y")
 
 # Définir le chemin et le nom du fichier
-file_path <- paste0("D:/CARTE_MENS_PPCA/Carte/Image/Insolation_", current_date, ".png")
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/Insolation_", current_date, ".png")
 
 # Sauvegarder la carte en tant que fichier PNG
 tmap_save(Insolation, filename = file_path)
 
 
 #-------------------------------
-#DIRECTION DU VENT
+#DIRECTION et VITESSE DU VENT
 #-------------------------------
 
 
 # Chemin vers votre fichier Excel
-file_path <- "D:/CARTE_MENS_PPCA/Carte/RESULTAT_2024.xls"
 
-donne <- read_excel('Vent_2024.xls',sheet = 1)
+donne <- read_excel('Vent_2024.xlsx',sheet = 1)
 
 
 # Assurez-vous que les colonnes sont nommées 'wd' et 'ws'

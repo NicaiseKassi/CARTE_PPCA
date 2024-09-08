@@ -1,3 +1,0 @@
-Info about RDB2 Files|1
-io_riegl_rdb
-QgsProcessingParameterFile|FILES|Input Files|QgsProcessingParameterFile.File|None|False
