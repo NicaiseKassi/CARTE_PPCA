@@ -6,7 +6,8 @@ setwd("/home/kassi/Documents/CARTE_PPCA")
 
 library(terra)
 library(sf)
-library(prettymapr)
+library(dplyr)
+library(readr)
 library(raster)
 library(geodata)
 library(RSAGA)
@@ -592,7 +593,9 @@ rsl <- rsaga.geoprocessor(
 rst <- terra::rast(fle.out)
 plot(rst, col = rainbow(25))
 
+#palette_Inso <- colorRampPalette(c("yellow", "orange", "red", "darkred"))
 
+#palette_custom <- palette_Inso(100)
 
 tmap_mode("plot")
 
@@ -673,6 +676,36 @@ tmap_save(Insolation, filename = file_path)
 
 donne <- read_excel('Vent_2024.xlsx',sheet = 1)
 
+windRose(donne,paddle = FALSE,key.position = "right", 
+                              key.header = "vitesse du vent")
+         
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/windRose_", current_date, ".png")
+
+# Ouvrir un fichier PNG
+png(filename = file_path)
 
 # Assurez-vous que les colonnes sont nommées 'wd' et 'ws'
-windRose(donne, wd = "wd", ws = "ws", angle = 10, cols = "jet", key.position = "right")
+
+windRose(donne,paddle = FALSE,key.position = "right", 
+         key.header = "vitesse du vent")
+
+dev.off()
+
+
+#-------------------------
+#    PREVISION PLUIE
+#-------------------------  
+
+# Lire le fichier CSV
+
+data1 <- read_csv("/home/kassi/Documents/CODE_PYTHON/MTEO_API/station_forcast_rain_12_09_2024.csv", show_col_types = FALSE)
+
+data_selected1 <- data1 %>%
+  select(station, latitude, longitude, rain_sum)
+
+
+
