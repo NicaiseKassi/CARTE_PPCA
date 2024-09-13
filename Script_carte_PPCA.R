@@ -382,7 +382,7 @@ tmap_mode("plot")
 PRECIP <- tm_shape(rst) + 
   tm_raster(col = "gwr_precip.tif", style = 'pretty',
             n = 9, title = "Pluviométrie\n[en mm]",
-            palette = "GnBu",
+            palette = "YlGnBu",
             #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
@@ -702,10 +702,588 @@ dev.off()
 
 # Lire le fichier CSV
 
-data1 <- read_csv("/home/kassi/Documents/CODE_PYTHON/MTEO_API/station_forcast_rain_12_09_2024.csv", show_col_types = FALSE)
+data1 <- read_csv("/home/kassi/Documents/CODE_PYTHON/MTEO_API/station_forcast_rain.csv", show_col_types = FALSE)
 
 data_selected1 <- data1 %>%
-  select(station, latitude, longitude, rain_sum)
+  dplyr::select(station, latitude, longitude, rain_sum)
+
+
+plot(civs, border = 'blue')
+points(data_selected1$longitude, data_selected1$latitude, pch = 16, col = 'red')
+
+rains <- data_selected1
+rains <- drop_na(rains)
+
+rains1 <- st_as_sf(rains, coords = c('longitude', 'latitude'), crs = st_crs(4326))
+rains <- st_transform(rains1, st_crs(32630))
+rains <- terra::vect(rains)
+
+rains <- as(rains, 'Spatial')
+
+colnames(rains@data) <- c('stt', 'rain_sum')
+head(rains)
+
+idw.rains_previ <- gstat::idw(rain_sum ~ 1, rains, grd)
+idw.rains_previ <- raster::raster(idw.rains_previ)
+idw.rains_previ <- rast(idw.rains_previ)
+idw.rains_previ <- terra::crop(idw.rains_previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.rains_previ <- terra::project(idw.rains_previ, '+proj=longlat +datum=WGS84 +no_defs')
+
+# Écrire le raster avec le nom de fichier généré
+terra::writeRaster(idw.rains_previ, 'raster/idw.rains_previ.tif',overwrite = TRUE)
+
+# Définir l'environnement RSAGA
+env <- rsaga.env(path = "/usr/bin")
+
+# Chemins des fichiers
+fle.srt <- 'raster/srtm.tif'
+fle.inp <- 'raster/idw.rains_previ.tif'
+fle.out <- 'raster/gwr_rain_previ.tif'
+
+rsl <- rsaga.geoprocessor(
+  lib = 'statistics_regression', 
+  module = 'GWR for Grid Downscaling',
+  param = list(PREDICTORS = fle.srt,
+               REGRESSION = fle.out,
+               DEPENDENT = fle.inp),
+  env = env
+)
+
+
+rst <- terra::rast(fle.out)
+plot(rst, col = rainbow(25))
+
+
+tmap_mode("plot")
+
+rain_previ <- tm_shape(rst) + 
+  tm_raster(col = "gwr_rain_previ.tif", style = 'pretty',
+            n = 9, title = "Cumul pluviometrique\n attendus [en mm]",
+            palette = "YlGnBu",
+            #breaks = VALEURS,
+            midpoint = FALSE, 
+            legend.reverse = TRUE, alpha = 1.0) +
+  tm_shape(STATIONS_CRS)+
+  tm_dots(col = "black", size = 0.1) + 
+  tm_text("STATIONS_PPCA", col = "black", size = 0.6, just = "top", ymod = 0.75) +
+  tm_shape(ocean_shp)+
+  tm_fill("lightskyblue1")+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_shape(ci_shp)+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_graticules(alpha = 0.4, lwd = 0.5, labels.size = 0.5) +
+  tm_compass(type = "8star", 
+             position = c("RIGHT", "TOP"),
+             show.labels = 2,
+             text.size = 0.35) +
+  tm_scale_bar(position = c(0.4,0)) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
+          height = 1.7,
+          halign = "bottom",
+          margin = 0.2,
+          position = c(0,0.9),
+          just = NA) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
+          height = 1.4,
+          halign = "bottom",
+          margin = 0.1,
+          position = c(0.8,0.0),
+          just = NA) +
+  tm_layout(
+    legend.format = list(text.separator = "-"),
+    main.title.fontface = 2,
+    main.title.position = 0.1,
+    main.title.size = 0.9,
+    panel.labels = c("Prévisions pluviométriques"),
+    panel.label.color = "darkslateblue",
+    #panel.label.size = 0.9,
+    inner.margins=c(0,0,0,0)) +
+  tm_xlab("Longitude (°W)") +
+  tm_ylab("Latitude (°N)") +
+  # Specify the variable for faceting
+  tm_facets(free.scales = TRUE) +
+  # Custom legend with fixed labels and colors
+  tm_legend(
+    outside = TRUE, 
+    hist.width = 2,
+    legend.position = c(0.10, 0.2),
+    legend.bg.alpha = 1,
+    title.size = .9,
+    text.size = 0.7,
+    legend.bg.color = "gray90", 
+    legend.frame = "gray90")
+
+
+print(rain_previ)
+
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/rain_previ_", current_date, ".png")
+
+# Sauvegarder la carte en tant que fichier PNG
+tmap_save(rain_previ, filename = file_path)
 
 
 
+#-------------------------
+#    AUTRES PREVISIONS
+#-------------------------
+library(dplyr)
+
+data2 <- read_csv("/home/kassi/Documents/CODE_PYTHON/MTEO_API/stations_forecast.csv", show_col_types = FALSE)
+
+data_selected2 <- data2 %>%
+  dplyr::select(station, latitude, longitude, temperature_2m_max, temperature_2m_min,
+                sunshine_duration_hours, soil_moisture_9_to_27cm_percentage)
+
+cols <- c('temperature_2m_max', 'temperature_2m_min', 'sunshine_duration_hours', 
+          'soil_moisture_9_to_27cm_percentage')
+
+data_selected2 <- data_selected2[,c(1,2,3, grep(paste0(cols, collapse = '|'), colnames(data_selected2)))]
+
+Previ <- data_selected2
+Previ <- drop_na(Previ)
+
+Previ1 <- st_as_sf(Previ, coords = c('longitude', 'latitude'), crs = st_crs(4326))
+Previ <- st_transform(Previ1, st_crs(32630))
+Previ <- terra::vect(Previ)
+
+Previ <- as(Previ, 'Spatial')
+
+colnames(Previ@data) <- c('stt', 'temperature_2m_max', 'temperature_2m_min', 'sunshine_duration_hours', 
+                          'soil_moisture_9_to_27cm_percentage')
+head(Previ)
+
+
+#-------------------------
+#    temperature_2m_max
+#-------------------------
+
+idw.temp2m_max_Previ <- gstat::idw(temperature_2m_max ~ 1, Previ, grd)
+idw.temp2m_max_Previ <- raster::raster(idw.temp2m_max_Previ)
+idw.temp2m_max_Previ <- rast(idw.temp2m_max_Previ)
+idw.temp2m_max_Previ <- terra::crop(idw.temp2m_max_Previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.temp2m_max_Previ <- terra::project(idw.temp2m_max_Previ, '+proj=longlat +datum=WGS84 +no_defs')
+
+# Écrire le raster avec le nom de fichier généré
+terra::writeRaster(idw.temp2m_max_Previ, 'raster/idw.temp2m_max_Previ.tif',overwrite = TRUE)
+
+# Définir l'environnement RSAGA
+env <- rsaga.env(path = "/usr/bin")
+
+# Chemins des fichiers
+fle.srt <- 'raster/srtm.tif'
+fle.inp <- 'raster/idw.temp2m_max_Previ.tif'
+fle.out <- 'raster/gwr_temp2m_max_Previ.tif'
+
+rsl <- rsaga.geoprocessor(
+  lib = 'statistics_regression', 
+  module = 'GWR for Grid Downscaling',
+  param = list(PREDICTORS = fle.srt,
+               REGRESSION = fle.out,
+               DEPENDENT = fle.inp),
+  env = env
+)
+
+
+rst <- terra::rast(fle.out)
+plot(rst, col = rainbow(25))
+
+
+tmap_mode("plot")
+
+temp2m_max_previ <- tm_shape(rst) + 
+  tm_raster(col = "gwr_temp2m_max_Previ.tif", style = 'pretty',
+            n = 9, title = "Température maxi\n[en °C]",
+            palette = "OrRd",
+            #breaks = VALEURS,
+            midpoint = FALSE, 
+            legend.reverse = TRUE, alpha = 1.0) +
+  tm_shape(STATIONS_CRS)+
+  tm_dots(col = "black", size = 0.1) + 
+  tm_text("STATIONS_PPCA", col = "black", size = 0.6, just = "top", ymod = 0.75) +
+  tm_shape(ocean_shp)+
+  tm_fill("lightskyblue1")+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_shape(ci_shp)+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_graticules(alpha = 0.4, lwd = 0.5, labels.size = 0.5) +
+  tm_compass(type = "8star", 
+             position = c("RIGHT", "TOP"),
+             show.labels = 2,
+             text.size = 0.35) +
+  tm_scale_bar(position = c(0.4,0)) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
+          height = 1.7,
+          halign = "bottom",
+          margin = 0.2,
+          position = c(0,0.9),
+          just = NA) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
+          height = 1.4,
+          halign = "bottom",
+          margin = 0.1,
+          position = c(0.8,0.0),
+          just = NA) +
+  tm_layout(
+    legend.format = list(text.separator = "-"),
+    main.title.fontface = 2,
+    main.title.position = 0.1,
+    main.title.size = 0.9,
+    panel.labels = c("Prévision température maxi"),
+    panel.label.color = "darkslateblue",
+    #panel.label.size = 0.9,
+    inner.margins=c(0,0,0,0)) +
+  tm_xlab("Longitude (°W)") +
+  tm_ylab("Latitude (°N)") +
+  # Specify the variable for faceting
+  tm_facets(free.scales = TRUE) +
+  # Custom legend with fixed labels and colors
+  tm_legend(
+    outside = TRUE, 
+    hist.width = 2,
+    legend.position = c(0.10, 0.2),
+    legend.bg.alpha = 1,
+    title.size = .9,
+    text.size = 0.7,
+    legend.bg.color = "gray90", 
+    legend.frame = "gray90")
+
+
+print(temp2m_max_previ)
+
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/temp2m_max_previ_", current_date, ".png")
+
+# Sauvegarder la carte en tant que fichier PNG
+tmap_save(temp2m_max_previ, filename = file_path)
+
+
+#-------------------------
+#    temperature_2m_mini
+#-------------------------
+
+idw.temp2m_mini_Previ <- gstat::idw(temperature_2m_min ~ 1, Previ, grd)
+idw.temp2m_mini_Previ <- raster::raster(idw.temp2m_mini_Previ)
+idw.temp2m_mini_Previ <- rast(idw.temp2m_mini_Previ)
+idw.temp2m_mini_Previ <- terra::crop(idw.temp2m_mini_Previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.temp2m_mini_Previ <- terra::project(idw.temp2m_mini_Previ, '+proj=longlat +datum=WGS84 +no_defs')
+
+# Écrire le raster avec le nom de fichier généré
+terra::writeRaster(idw.temp2m_mini_Previ, 'raster/idw.temp2m_mini_Previ.tif',overwrite = TRUE)
+
+# Définir l'environnement RSAGA
+env <- rsaga.env(path = "/usr/bin")
+
+# Chemins des fichiers
+fle.srt <- 'raster/srtm.tif'
+fle.inp <- 'raster/idw.temp2m_mini_Previ.tif'
+fle.out <- 'raster/gwr_temp2m_mini_Previ.tif'
+
+rsl <- rsaga.geoprocessor(
+  lib = 'statistics_regression', 
+  module = 'GWR for Grid Downscaling',
+  param = list(PREDICTORS = fle.srt,
+               REGRESSION = fle.out,
+               DEPENDENT = fle.inp),
+  env = env
+)
+
+
+rst <- terra::rast(fle.out)
+plot(rst, col = rainbow(25))
+
+palette_tmin <- colorRampPalette(c("#0080FF", "#4CC4FF", "#99EEFF", "#CCFFFF", "#FFEE99", "#FFC44C"))
+
+palette_custom <- palette_tmin(100)
+
+
+tmap_mode("plot")
+
+temp2m_mini_previ <- tm_shape(rst) + 
+  tm_raster(col = "gwr_temp2m_mini_Previ.tif", style = 'pretty',
+            n = 9, title = "Température mini\n[en °C]",
+            palette = palette_custom,
+            #breaks = VALEURS,
+            midpoint = FALSE, 
+            legend.reverse = TRUE, alpha = 1.0) +
+  tm_shape(STATIONS_CRS)+
+  tm_dots(col = "black", size = 0.1) + 
+  tm_text("STATIONS_PPCA", col = "black", size = 0.6, just = "top", ymod = 0.75) +
+  tm_shape(ocean_shp)+
+  tm_fill("lightskyblue1")+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_shape(ci_shp)+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_graticules(alpha = 0.4, lwd = 0.5, labels.size = 0.5) +
+  tm_compass(type = "8star", 
+             position = c("RIGHT", "TOP"),
+             show.labels = 2,
+             text.size = 0.35) +
+  tm_scale_bar(position = c(0.4,0)) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
+          height = 1.7,
+          halign = "bottom",
+          margin = 0.2,
+          position = c(0,0.9),
+          just = NA) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
+          height = 1.4,
+          halign = "bottom",
+          margin = 0.1,
+          position = c(0.8,0.0),
+          just = NA) +
+  tm_layout(
+    legend.format = list(text.separator = "-"),
+    main.title.fontface = 2,
+    main.title.position = 0.1,
+    main.title.size = 0.9,
+    panel.labels = c("Prévision température mini"),
+    panel.label.color = "darkslateblue",
+    #panel.label.size = 0.9,
+    inner.margins=c(0,0,0,0)) +
+  tm_xlab("Longitude (°W)") +
+  tm_ylab("Latitude (°N)") +
+  # Specify the variable for faceting
+  tm_facets(free.scales = TRUE) +
+  # Custom legend with fixed labels and colors
+  tm_legend(
+    outside = TRUE, 
+    hist.width = 2,
+    legend.position = c(0.10, 0.2),
+    legend.bg.alpha = 1,
+    title.size = .9,
+    text.size = 0.7,
+    legend.bg.color = "gray90", 
+    legend.frame = "gray90")
+
+
+print(temp2m_mini_previ)
+
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/temp2m_mini_previ_", current_date, ".png")
+
+# Sauvegarder la carte en tant que fichier PNG
+tmap_save(temp2m_mini_previ, filename = file_path)
+
+
+#-------------------------
+# sunshine_duration_hours
+#-------------------------
+
+idw.duree_inso_previ <- gstat::idw(sunshine_duration_hours ~ 1, Previ, grd)
+idw.duree_inso_previ <- raster::raster(idw.duree_inso_previ)
+idw.duree_inso_previ <- rast(idw.duree_inso_previ)
+idw.duree_inso_previ <- terra::crop(idw.duree_inso_previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.duree_inso_previ <- terra::project(idw.duree_inso_previ, '+proj=longlat +datum=WGS84 +no_defs')
+
+# Écrire le raster avec le nom de fichier généré
+terra::writeRaster(idw.duree_inso_previ, 'raster/idw.duree_inso_previ.tif',overwrite = TRUE)
+
+# Définir l'environnement RSAGA
+env <- rsaga.env(path = "/usr/bin")
+
+# Chemins des fichiers
+fle.srt <- 'raster/srtm.tif'
+fle.inp <- 'raster/idw.duree_inso_previ.tif'
+fle.out <- 'raster/gwr_duree_inso_previ.tif'
+
+rsl <- rsaga.geoprocessor(
+  lib = 'statistics_regression', 
+  module = 'GWR for Grid Downscaling',
+  param = list(PREDICTORS = fle.srt,
+               REGRESSION = fle.out,
+               DEPENDENT = fle.inp),
+  env = env
+)
+
+
+rst <- terra::rast(fle.out)
+plot(rst, col = rainbow(25))
+
+
+tmap_mode("plot")
+
+duree_inso_previ <- tm_shape(rst) + 
+  tm_raster(col = "gwr_duree_inso_previ.tif", style = 'pretty',
+            n = 9, title = "Nombre d'heure d'nsolation\n[en heure]",
+            palette = "YlOrBr",
+            #breaks = VALEURS,
+            midpoint = FALSE, 
+            legend.reverse = TRUE, alpha = 1.0) +
+  tm_shape(STATIONS_CRS)+
+  tm_dots(col = "black", size = 0.1) + 
+  tm_text("STATIONS_PPCA", col = "black", size = 0.6, just = "top", ymod = 0.75) +
+  tm_shape(ocean_shp)+
+  tm_fill("lightskyblue1")+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_shape(ci_shp)+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_graticules(alpha = 0.4, lwd = 0.5, labels.size = 0.5) +
+  tm_compass(type = "8star", 
+             position = c("RIGHT", "TOP"),
+             show.labels = 2,
+             text.size = 0.35) +
+  tm_scale_bar(position = c(0.4,0)) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
+          height = 1.7,
+          halign = "bottom",
+          margin = 0.2,
+          position = c(0,0.9),
+          just = NA) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
+          height = 1.4,
+          halign = "bottom",
+          margin = 0.1,
+          position = c(0.8,0.0),
+          just = NA) +
+  tm_layout(
+    legend.format = list(text.separator = "-"),
+    main.title.fontface = 2,
+    main.title.position = 0.1,
+    main.title.size = 0.9,
+    panel.labels = c("Prévision durée d'insoloation"),
+    panel.label.color = "darkslateblue",
+    #panel.label.size = 0.9,
+    inner.margins=c(0,0,0,0)) +
+  tm_xlab("Longitude (°W)") +
+  tm_ylab("Latitude (°N)") +
+  # Specify the variable for faceting
+  tm_facets(free.scales = TRUE) +
+  # Custom legend with fixed labels and colors
+  tm_legend(
+    outside = TRUE, 
+    hist.width = 2,
+    legend.position = c(0.10, 0.2),
+    legend.bg.alpha = 1,
+    title.size = .9,
+    text.size = 0.7,
+    legend.bg.color = "gray90", 
+    legend.frame = "gray90")
+
+
+print(duree_inso_previ)
+
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/duree_inso_previ_", current_date, ".png")
+
+# Sauvegarder la carte en tant que fichier PNG
+tmap_save(duree_inso_previ, filename = file_path)
+
+
+#----------------------------------
+#soil_moisture_9_to_27cm_percentage
+#----------------------------------
+
+idw.humidite_sol_previ <- gstat::idw(soil_moisture_9_to_27cm_percentage ~ 1, Previ, grd)
+idw.humidite_sol_previ <- raster::raster(idw.humidite_sol_previ)
+idw.humidite_sol_previ <- rast(idw.humidite_sol_previ)
+idw.humidite_sol_previ <- terra::crop(idw.humidite_sol_previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.humidite_sol_previ <- terra::project(idw.humidite_sol_previ, '+proj=longlat +datum=WGS84 +no_defs')
+
+# Écrire le raster avec le nom de fichier généré
+terra::writeRaster(idw.humidite_sol_previ, 'raster/idw.humidite_sol_previ.tif',overwrite = TRUE)
+
+# Définir l'environnement RSAGA
+env <- rsaga.env(path = "/usr/bin")
+
+# Chemins des fichiers
+fle.srt <- 'raster/srtm.tif'
+fle.inp <- 'raster/idw.humidite_sol_previ.tif'
+fle.out <- 'raster/gwr_humidite_sol_previ.tif'
+
+rsl <- rsaga.geoprocessor(
+  lib = 'statistics_regression', 
+  module = 'GWR for Grid Downscaling',
+  param = list(PREDICTORS = fle.srt,
+               REGRESSION = fle.out,
+               DEPENDENT = fle.inp),
+  env = env
+)
+
+
+rst <- terra::rast(fle.out)
+plot(rst, col = rainbow(25))
+
+
+tmap_mode("plot")
+
+humidite_sol_previ <- tm_shape(rst) + 
+  tm_raster(col = "gwr_humidite_sol_previ.tif", style = 'pretty',
+            n = 9, title = "Teneur en eau du sol\n[en %]",
+            palette = "Spectral",
+            #breaks = VALEURS,
+            midpoint = FALSE, 
+            legend.reverse = TRUE, alpha = 1.0) +
+  tm_shape(STATIONS_CRS)+
+  tm_dots(col = "black", size = 0.1) + 
+  tm_text("STATIONS_PPCA", col = "black", size = 0.6, just = "top", ymod = 0.75) +
+  tm_shape(ocean_shp)+
+  tm_fill("lightskyblue1")+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_shape(ci_shp)+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_graticules(alpha = 0.4, lwd = 0.5, labels.size = 0.5) +
+  tm_compass(type = "8star", 
+             position = c("RIGHT", "TOP"),
+             show.labels = 2,
+             text.size = 0.35) +
+  tm_scale_bar(position = c(0.4,0)) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
+          height = 1.7,
+          halign = "bottom",
+          margin = 0.2,
+          position = c(0,0.9),
+          just = NA) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
+          height = 1.4,
+          halign = "bottom",
+          margin = 0.1,
+          position = c(0.8,0.0),
+          just = NA) +
+  tm_layout(
+    legend.format = list(text.separator = "-"),
+    main.title.fontface = 2,
+    main.title.position = 0.1,
+    main.title.size = 0.9,
+    panel.labels = c("Prévision humidité du sol"),
+    panel.label.color = "darkslateblue",
+    #panel.label.size = 0.9,
+    inner.margins=c(0,0,0,0)) +
+  tm_xlab("Longitude (°W)") +
+  tm_ylab("Latitude (°N)") +
+  # Specify the variable for faceting
+  tm_facets(free.scales = TRUE) +
+  # Custom legend with fixed labels and colors
+  tm_legend(
+    outside = TRUE, 
+    hist.width = 2,
+    legend.position = c(0.10, 0.2),
+    legend.bg.alpha = 1,
+    title.size = .9,
+    text.size = 0.7,
+    legend.bg.color = "gray90", 
+    legend.frame = "gray90")
+
+
+print(humidite_sol_previ)
+
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/humidite_sol_previ_", current_date, ".png")
+
+# Sauvegarder la carte en tant que fichier PNG
+tmap_save(humidite_sol_previ, filename = file_path)
