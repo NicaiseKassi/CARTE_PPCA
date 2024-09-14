@@ -6,11 +6,11 @@ setwd("/home/kassi/Documents/CARTE_PPCA")
 
 library(terra)
 library(sf)
+library(RSAGA)
 library(dplyr)
 library(readr)
 library(raster)
 library(geodata)
-library(RSAGA)
 library(tidyverse)
 library(gstat) 
 library(fs) 
@@ -696,34 +696,37 @@ windRose(donne,paddle = FALSE,key.position = "right",
 dev.off()
 
 
-#-------------------------
+#--------------------
 #    PREVISION PLUIE
-#-------------------------  
+#--------------------
 
 # Lire le fichier CSV
 
-data1 <- read_csv("/home/kassi/Documents/CODE_PYTHON/MTEO_API/station_forcast_rain.csv", show_col_types = FALSE)
+data1 <- read_csv("/home/kassi/Documents/CODE_PYTHON/MTEO_API/station_forcast_rain&humidy.csv", show_col_types = FALSE)
 
 data_selected1 <- data1 %>%
-  dplyr::select(station, latitude, longitude, rain_sum)
-
+  dplyr::select(station, latitude, longitude, rain_sum, relative_humidity_2m)
 
 plot(civs, border = 'blue')
 points(data_selected1$longitude, data_selected1$latitude, pch = 16, col = 'red')
 
-rains <- data_selected1
-rains <- drop_na(rains)
+cols <- c('rain_sum', 'relative_humidity_2m')
 
-rains1 <- st_as_sf(rains, coords = c('longitude', 'latitude'), crs = st_crs(4326))
-rains <- st_transform(rains1, st_crs(32630))
-rains <- terra::vect(rains)
+data_selected1 <- data_selected1[,c(1,2,3, grep(paste0(cols, collapse = '|'), colnames(data_selected1)))]
 
-rains <- as(rains, 'Spatial')
+rains_humi <- data_selected1
+rains_humi <- drop_na(rains_humi)
 
-colnames(rains@data) <- c('stt', 'rain_sum')
-head(rains)
+rains_humi1 <- st_as_sf(rains_humi, coords = c('longitude', 'latitude'), crs = st_crs(4326))
+rains_humi <- st_transform(rains_humi1, st_crs(32630))
+rains_humi <- terra::vect(rains_humi)
 
-idw.rains_previ <- gstat::idw(rain_sum ~ 1, rains, grd)
+rains_humi <- as(rains_humi, 'Spatial')
+
+colnames(rains_humi@data) <- c('stt', 'rain_sum', 'relative_humidity_2m')
+head(rains_humi)
+
+idw.rains_previ <- gstat::idw(rain_sum ~ 1, rains_humi, grd)
 idw.rains_previ <- raster::raster(idw.rains_previ)
 idw.rains_previ <- rast(idw.rains_previ)
 idw.rains_previ <- terra::crop(idw.rains_previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
@@ -824,6 +827,113 @@ file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/rain_previ_", curren
 
 # Sauvegarder la carte en tant que fichier PNG
 tmap_save(rain_previ, filename = file_path)
+
+
+
+#--------------------
+# PREVISION HUMIDITE
+#--------------------
+
+idw.humi_previ <- gstat::idw(relative_humidity_2m ~ 1, rains_humi, grd)
+idw.humi_previ <- raster::raster(idw.humi_previ)
+idw.humi_previ <- rast(idw.humi_previ)
+idw.humi_previ <- terra::crop(idw.humi_previ, PPCA_shp) %>% terra::mask(., PPCA_shp)
+idw.humi_previ <- terra::project(idw.humi_previ, '+proj=longlat +datum=WGS84 +no_defs')
+
+# Écrire le raster avec le nom de fichier généré
+terra::writeRaster(idw.humi_previ, 'raster/idw.humi_previ.tif',overwrite = TRUE)
+
+# Définir l'environnement RSAGA
+env <- rsaga.env(path = "/usr/bin")
+
+# Chemins des fichiers
+fle.srt <- 'raster/srtm.tif'
+fle.inp <- 'raster/idw.humi_previ.tif'
+fle.out <- 'raster/gwr_humi_previ.tif'
+
+rsl <- rsaga.geoprocessor(
+  lib = 'statistics_regression', 
+  module = 'GWR for Grid Downscaling',
+  param = list(PREDICTORS = fle.srt,
+               REGRESSION = fle.out,
+               DEPENDENT = fle.inp),
+  env = env
+)
+
+
+rst <- terra::rast(fle.out)
+plot(rst, col = rainbow(25))
+
+
+tmap_mode("plot")
+
+humi_previ <- tm_shape(rst) + 
+  tm_raster(col = "gwr_humi_previ.tif", style = 'pretty',
+            n = 9, title = "Taux d'humidité\n [en %]",
+            palette = "PuBuGn",
+            midpoint = FALSE, 
+            legend.reverse = TRUE, alpha = 1.0) +
+  tm_shape(STATIONS_CRS)+
+  tm_dots(col = "black", size = 0.1) + 
+  tm_text("STATIONS_PPCA", col = "black", size = 0.6, just = "top", ymod = 0.75) +
+  tm_shape(ocean_shp)+
+  tm_fill("lightskyblue1")+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_shape(ci_shp)+
+  tm_borders(col = "black", lwd = 0.7) +
+  tm_graticules(alpha = 0.4, lwd = 0.5, labels.size = 0.5) +
+  tm_compass(type = "8star", 
+             position = c("RIGHT", "TOP"),
+             show.labels = 2,
+             text.size = 0.35) +
+  tm_scale_bar(position = c(0.4,0)) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/LOGO_CCA-removebg.png",
+          height = 1.7,
+          halign = "bottom",
+          margin = 0.2,
+          position = c(0,0.9),
+          just = NA) +
+  tm_logo("/home/kassi/Documents/CARTE_PPCA/Image2-removebg.png",
+          height = 1.4,
+          halign = "bottom",
+          margin = 0.1,
+          position = c(0.8,0.0),
+          just = NA) +
+  tm_layout(
+    legend.format = list(text.separator = "-"),
+    main.title.fontface = 2,
+    main.title.position = 0.1,
+    main.title.size = 0.9,
+    panel.labels = c("Prévision d'humidité relative"),
+    panel.label.color = "darkslateblue",
+    #panel.label.size = 0.9,
+    inner.margins=c(0,0,0,0)) +
+  tm_xlab("Longitude (°W)") +
+  tm_ylab("Latitude (°N)") +
+  # Specify the variable for faceting
+  tm_facets(free.scales = TRUE) +
+  # Custom legend with fixed labels and colors
+  tm_legend(
+    outside = TRUE, 
+    hist.width = 2,
+    legend.position = c(0.10, 0.2),
+    legend.bg.alpha = 1,
+    title.size = .9,
+    text.size = 0.7,
+    legend.bg.color = "gray90", 
+    legend.frame = "gray90")
+
+
+print(humi_previ)
+
+# Obtenir la date et l'heure actuelles
+current_date <- format(Sys.Date(), "%d-%m-%Y")
+
+# Définir le chemin et le nom du fichier
+file_path <- paste0("/home/kassi/Documents/CARTE_PPCA/Image/humi_previ_", current_date, ".png")
+
+# Sauvegarder la carte en tant que fichier PNG
+tmap_save(humi_previ, filename = file_path)
 
 
 
@@ -1150,7 +1260,7 @@ duree_inso_previ <- tm_shape(rst) +
     main.title.fontface = 2,
     main.title.position = 0.1,
     main.title.size = 0.9,
-    panel.labels = c("Prévision durée d'insoloation"),
+    panel.labels = c("Prévision durée d'insolation"),
     panel.label.color = "darkslateblue",
     #panel.label.size = 0.9,
     inner.margins=c(0,0,0,0)) +
@@ -1160,7 +1270,7 @@ duree_inso_previ <- tm_shape(rst) +
   tm_facets(free.scales = TRUE) +
   # Custom legend with fixed labels and colors
   tm_legend(
-    outside = TRUE, 
+    outside = TRUE,
     hist.width = 2,
     legend.position = c(0.10, 0.2),
     legend.bg.alpha = 1,
