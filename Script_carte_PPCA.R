@@ -25,7 +25,7 @@ library(leaflet)
 library(openair)
 
 
-tble <- read_excel('RESULTAT_2024.xlsx',sheet = 1)
+tble <- read_excel('RESULTAT_2024.xlsx',sheet = 3)
 print(tble)
 
 
@@ -460,7 +460,7 @@ idw.Rh2m <- terra::project(idw.Rh2m, '+proj=longlat +datum=WGS84 +no_defs')
 
 
 # Écrire le raster avec le nom de fichier généré
-terra::writeRaster(idw.Rh2m, 'raster/idw.Rh2m.tif')
+terra::writeRaster(idw.Rh2m, 'raster/idw.Rh2m.tif',overwrite = TRUE)
 
 # Définir l'environnement RSAGA
 env <- rsaga.env(path = "/usr/bin")
@@ -674,7 +674,7 @@ tmap_save(Insolation, filename = file_path)
 
 # Chemin vers votre fichier Excel
 
-donne <- read_excel('Vent_2024.xlsx',sheet = 1)
+donne <- read_excel('Vent_2024.xlsx',sheet = 3)
 
 windRose(donne,paddle = FALSE,key.position = "right", 
                               key.header = "vitesse du vent")
@@ -760,10 +760,10 @@ plot(rst, col = rainbow(25))
 tmap_mode("plot")
 
 rain_previ <- tm_shape(rst) + 
-  tm_raster(col = "gwr_rain_previ.tif", style = 'pretty',
-            n = 9, title = "Cumul pluviometrique\n attendus [en mm]",
+  tm_raster(col = "gwr_rain_previ.tif", style = 'fixed',
+            breaks = c(0, 1, 2, 3, 4, 5, 6, 7),
+            n = 9, title = "Cumul pluviometrique\n attendu [en mm]",
             palette = "YlGnBu",
-            #breaks = VALEURS,
             midpoint = FALSE, 
             legend.reverse = TRUE, alpha = 1.0) +
   tm_shape(STATIONS_CRS)+
